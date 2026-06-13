@@ -32,7 +32,8 @@ These philosophies are fundamentally opposed.
 
 # Required Precepts
 
-None.
+### Infrastructure Required
+-10 mood after 30 days without road building. 30-day grace period for new colonies.
 
 ---
 
@@ -94,12 +95,15 @@ Cooldown: 3 days
 
 Duration: 24 hours
 
+Radius: 19.8 tiles (double Production Command)
+
+The Surveyor inspires nearby workers to build faster.
+
 Nearby colonists receive:
 
 * Construction speed +75%
-* Move speed +10%
 
-> **Open design:** `GeneralLaborSpeed` was considered for hauling but dropped (Move Speed covers the walking portion). Should the buff persist after leaving the aura radius (enabling road building)? Currently uses a standard link like Production Command.
+Caravan support: casting before departing multiplies road-building work output by ×1.75.
 
 ### Disabled Work Types
 
@@ -107,6 +111,16 @@ Nearby colonists receive:
 * Plants
 * Animals
 * Artistic
+
+---
+
+# Required Precepts
+
+### Infrastructure Required (WM_Infrastructure_Required)
+
+Forced precept (requireOne). Triggers a -10 mood penalty on all Waymakers colonists after 30 days without building a road or railway.
+
+New colonies get a 30-day grace period starting from the settlement date.
 
 ---
 
@@ -299,6 +313,16 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
   - [ ] Raider incompatibility: vanilla Raider has no `exclusionTags`, needs Harmony check
   - [ ] VFEA_Isolationist incompatibility: needs XML patch to add `Waymaker` tag
 
+## Block 2b: Forced Precepts
+
+- [x] `WM_Infrastructure_Required` , -10 mood after 30 days without road building
+- [x] Custom `ThoughtWorker_Precept_RecentRoadBuild` (30-day threshold, settleTick grace period)
+- [x] Dummy invisible stage 0 (within threshold) + stage 1 (-10 penalty)
+- [x] `{DAYSSINCELASTROADTHRESHOLD}` template in `thoughtStageDescriptions`
+- [x] `tooltipShowMoodRange` shows the -10 mood range
+- [x] Positive road moods described in precept description text
+- [x] Forced via `<requireOne>` on `WM_Waymakers`
+
 ## Block 3: Surveyor Specialist Role
 
 - [x] Create `1.6/Defs/PreceptDefs/Role_Surveyor.xml`
@@ -339,15 +363,16 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] Patch `EndConstruction` (prefix) to detect road completions
 - [x] Patch `FinaliseConstructionSite` to count legs in chain
 - [x] Leg tracking via `RuntimeHelpers.GetHashCode` + `CountLegs` walking `previous` chain
-- [ ] Work speed bonus: Patch `WorldObjectComp_Caravan.AmountOfWork` when meme active
-- [ ] Route destruction trigger , **back burner**
+- [x] Caravan work speed: Patch `WorldObjectComp_Caravan.AmountOfWork` (×1.75 when caster hediff active)
+- [ ] Route destruction trigger, **back burner**
 
 ## Block 8: C# Assembly
 
 - [x] Create `Source/` with `.csproj` (net472, Krafs.Rimworld.Ref, Harmony, <ExcludeAssets>runtime)
 - [x] Harmony bootstrapper with manual `harmony.Patch()` calls
-- [x] RotR integration patches (EndConstruction prefix + FinaliseConstructionSite postfix)
+- [x] RotR integration patches (EndConstruction prefix + FinaliseConstructionSite postfix + caravan work)
 - [x] Reflection-based access (`Traverse`, `AccessTools.Method`), no compile-time RotR dep
+- [x] `ThoughtWorker_Precept_RecentRoadBuild` (Infrastructure Required, 30-day threshold, grace period)
 - [ ] ThoughtWorkers for conditional thoughts (Isolated Settlement)
 
 ## Block 9: Assets
@@ -367,4 +392,4 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 ## Nice-to-haves
 
 - [x] RulePackDef for Surveyor name maker
-- [x] Coordinate Works caravan support — patched `AmountOfWork` (×1.75 when caster hediff active)
+- [x] Coordinate Works caravan support , patched `AmountOfWork` (×1.75 when caster hediff active)
