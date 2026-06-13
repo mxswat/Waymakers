@@ -1,6 +1,6 @@
 # Waymakers
 
-A RimWorld meme mod integrated with **Rails and Roads of the Rim**.
+A RimWorld meme mod integrated with [Rails and Roads of the Rim](https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410).
 
 ## What it does
 
@@ -31,7 +31,7 @@ Mood scales with road length (legs / 3) and duration scales with legs.
 ## Dependencies
 - Harmony
 - RimWorld - Ideology
-- Rails and Roads of the Rim (Continued)
+- [Rails and Roads of the Rim (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410)
 
 ## Build
 
