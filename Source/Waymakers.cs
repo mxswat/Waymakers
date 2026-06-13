@@ -234,14 +234,13 @@ namespace Waymakers
             if (!p.IsColonist || p.IsSlave)
                 return false;
 
-            if (WaymakersMod.lastRoadBuildTick < 0)
-                return false;
+            int lastTick = WaymakersMod.lastRoadBuildTick;
+            // Use settleTick as baseline for new colonies so they get a 30-day grace period
+            if (lastTick < 0)
+                lastTick = Find.TickManager.SettleTick;
 
-            int daysSince = (Find.TickManager.TicksGame - WaymakersMod.lastRoadBuildTick) / 60000;
-            if (daysSince > ThresholdDays)
-                return ThoughtState.ActiveAtStage(0);
-
-            return false;
+            int daysSince = (Find.TickManager.TicksGame - lastTick) / 60000;
+            return ThoughtState.ActiveAtStage(daysSince > ThresholdDays ? 1 : 0);
         }
 
         public IEnumerable<NamedArgument> GetDescriptionArgs()

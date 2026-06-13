@@ -67,7 +67,12 @@
   <ThoughtDef>
     <defName>WM_NoRecentRoad</defName>
     <workerClass>Waymakers.ThoughtWorker_Precept_RecentRoadBuild</workerClass>
+    <validWhileDespawned>true</validWhileDespawned>
+    <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
     <stages>
+      <li>
+        <visible>false</visible>
+      </li>
       <li>
         <label>no recent road built</label>
         <description>Our settlements remain disconnected. We must build roads and railways.</description>
