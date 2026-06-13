@@ -64,4 +64,16 @@
     </stages>
   </ThoughtDef>
 
+  <ThoughtDef>
+    <defName>WM_NoRecentRoad</defName>
+    <workerClass>Waymakers.ThoughtWorker_Precept_RecentRoadBuild</workerClass>
+    <stages>
+      <li>
+        <label>no recent road built</label>
+        <description>Our settlements remain disconnected. We must build roads and railways.</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
 </Defs>

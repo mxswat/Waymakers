@@ -25,6 +25,11 @@
         <degree>-1</degree>
       </Industriousness>
     </disagreeableTraits>
+    <requireOne>
+      <li>
+        <li>WM_Infrastructure_Required</li>
+      </li>
+    </requireOne>
     <generalRules>
       <rulesStrings>
         <li>memeAdjective->connected</li>

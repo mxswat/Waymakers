@@ -15,6 +15,7 @@ namespace Waymakers
 
         private static MemeDef memeDef;
         private static HediffDef coordinateWorksHediff;
+        internal static int lastRoadBuildTick = -1;
 
         public static MemeDef Meme => memeDef;
         public static HediffDef CoordinateWorksHediff => coordinateWorksHediff;
@@ -87,6 +88,8 @@ namespace Waymakers
                 int durationDays = 5 + legs;
 
                 Log.Message($"[Waymakers] Road completed: {roadDef.label}, legs={legs}, qualityTier={qualityTier}, mood=+{mood}, duration={durationDays}d");
+
+                WaymakersMod.lastRoadBuildTick = Find.TickManager.TicksGame;
 
                 ApplyThoughtToWaymakers(qualityTier, mood, durationDays);
             }
@@ -219,6 +222,31 @@ namespace Waymakers
                     return;
                 }
             }
+        }
+    }
+
+    public class ThoughtWorker_Precept_RecentRoadBuild : ThoughtWorker_Precept, IPreceptCompDescriptionArgs
+    {
+        private static readonly int ThresholdDays = 30;
+
+        protected override ThoughtState ShouldHaveThought(Pawn p)
+        {
+            if (!p.IsColonist || p.IsSlave)
+                return false;
+
+            if (WaymakersMod.lastRoadBuildTick < 0)
+                return false;
+
+            int daysSince = (Find.TickManager.TicksGame - WaymakersMod.lastRoadBuildTick) / 60000;
+            if (daysSince > ThresholdDays)
+                return ThoughtState.ActiveAtStage(0);
+
+            return false;
+        }
+
+        public IEnumerable<NamedArgument> GetDescriptionArgs()
+        {
+            yield return ThresholdDays.Named("DAYSSINCELASTROADTHRESHOLD");
         }
     }
 }
