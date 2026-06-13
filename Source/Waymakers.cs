@@ -14,8 +14,10 @@ namespace Waymakers
         public const string Id = "waymakers.meme";
 
         private static MemeDef memeDef;
+        private static HediffDef coordinateWorksHediff;
 
         public static MemeDef Meme => memeDef;
+        public static HediffDef CoordinateWorksHediff => coordinateWorksHediff;
 
         static WaymakersMod()
         {
@@ -40,6 +42,15 @@ namespace Waymakers
                     Log.Message("[Waymakers] Patched FinaliseConstructionSite.");
                 }
                 else Log.Error("[Waymakers] FinaliseConstructionSite not found.");
+
+                var workMethod = AccessTools.Method("RailsAndRoadsOfTheRim.WorldObjectComp_Caravan:AmountOfWork");
+                if (workMethod != null)
+                {
+                    var postfix = new HarmonyMethod(typeof(Patch_CaravanWork), nameof(Patch_CaravanWork.Postfix));
+                    harmony.Patch(workMethod, postfix: postfix);
+                    Log.Message("[Waymakers] Patched AmountOfWork (caravan work boost).");
+                }
+                else Log.Error("[Waymakers] AmountOfWork not found.");
             }
             catch (Exception e)
             {
@@ -47,6 +58,7 @@ namespace Waymakers
             }
 
             memeDef = DefDatabase<MemeDef>.GetNamed("WM_Waymakers");
+            coordinateWorksHediff = DefDatabase<HediffDef>.GetNamed("WM_CoordinateWorks");
 
             if (memeDef == null)
                 Log.Error("[Waymakers] MemeDef 'WM_Waymakers' not found.");
@@ -187,6 +199,26 @@ namespace Waymakers
                 return count;
             }
             return 1;
+        }
+    }
+
+    public static class Patch_CaravanWork
+    {
+        public static void Postfix(object __instance, ref float __result)
+        {
+            if (WaymakersMod.CoordinateWorksHediff == null) return;
+
+            var caravan = Traverse.Create(__instance).Field("parent").GetValue() as Caravan;
+            if (caravan == null) return;
+
+            foreach (var pawn in caravan.PawnsListForReading)
+            {
+                if (pawn.health?.hediffSet?.HasHediff(WaymakersMod.CoordinateWorksHediff) == true)
+                {
+                    __result *= 1.75f;
+                    return;
+                }
+            }
         }
     }
 }

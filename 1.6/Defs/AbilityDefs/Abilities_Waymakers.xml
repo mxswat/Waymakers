@@ -4,7 +4,7 @@
   <AbilityDef ParentName="RoleAuraBuffBase">
     <defName>WM_CoordinateWorks</defName>
     <label>coordinate works</label>
-    <description>Coordinate construction and logistics for nearby workers, boosting their efficiency. Construction speed is significantly increased, while hauling and movement are moderately improved. Lasts 24 hours.</description>
+    <description>Coordinate construction efforts across a wide area, boosting the construction speed of all nearby workers by 75%. If cast before entering a caravan, it also accelerates road building on the world map. Lasts 24 hours.</description>
     <iconPath>UI/Abilities/CoordinateWorks</iconPath>
     <warmupMoteSocialSymbol>UI/Abilities/CoordinateWorks</warmupMoteSocialSymbol>
     <showWhenDrafted>false</showWhenDrafted>
@@ -19,6 +19,12 @@
         <replaceExisting>true</replaceExisting>
       </li>
     </comps>
+    <statBases>
+      <Ability_EffectRadius>19.8</Ability_EffectRadius>
+    </statBases>
+    <verbProperties>
+      <range>19.8</range>
+    </verbProperties>
   </AbilityDef>
 
 </Defs>

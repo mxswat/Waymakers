@@ -12,9 +12,9 @@
       </li>
       <li Class="HediffCompProperties_DisappearsOnDeath"/>
       <li Class="HediffCompProperties_GiveHediffsInRange">
-        <range>9.9</range>
+        <range>19.8</range>
         <mote>Mote_WorkCommand</mote>
-        <hideMoteWhenNotDrafted>true</hideMoteWhenNotDrafted>
+        <hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
         <targetingParameters>
           <canTargetBuildings>false</canTargetBuildings>
           <canTargetAnimals>false</canTargetAnimals>
@@ -27,20 +27,32 @@
     <isBad>false</isBad>
   </HediffDef>
 
-  <HediffDef ParentName="WorkRoleAuraBuffHediffBase">
+  <HediffDef>
     <defName>WM_CoordinateWorksBuff</defName>
     <label>coordinate works</label>
-    <description>This person's construction, hauling, and movement speeds are boosted thanks to being near a surveyor using coordinate works.</description>
+    <description>This person's construction speed is boosted thanks to being near a surveyor using coordinate works.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.52, 1, 0.95)</defaultLabelColor>
     <debugLabelExtra>other</debugLabelExtra>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>false</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+      <li Class="HediffCompProperties_Link">
+        <requireLinkOnOtherPawn>false</requireLinkOnOtherPawn>
+        <maxDistance>19.8</maxDistance>
+        <customMote>Mote_WorkCommandLinkLine</customMote>
+      </li>
+    </comps>
     <stages>
       <li>
         <statOffsets>
-          <ConstructionSpeed>0.50</ConstructionSpeed>
-          <GeneralLaborSpeed>0.25</GeneralLaborSpeed>
-          <MoveSpeed>0.10</MoveSpeed>
+          <ConstructionSpeed>0.75</ConstructionSpeed>
         </statOffsets>
       </li>
     </stages>
+    <isBad>false</isBad>
   </HediffDef>
 
 </Defs>
