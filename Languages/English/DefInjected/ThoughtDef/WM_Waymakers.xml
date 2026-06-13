@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <WM_RoadBuilt_Crude.label>crude road built</WM_RoadBuilt_Crude.label>
+  <WM_RoadBuilt_Basic.label>road built</WM_RoadBuilt_Basic.label>
+  <WM_RoadBuilt_Engineered.label>engineered route built</WM_RoadBuilt_Engineered.label>
+  <WM_RoadBuilt_Advanced.label>glittering route built</WM_RoadBuilt_Advanced.label>
+</LanguageData>
