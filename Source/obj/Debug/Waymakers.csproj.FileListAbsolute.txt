@@ -1,0 +1,7 @@
+F:\SteamLibrary\steamapps\common\RimWorld\Mods\Waymakers\1.6\Assemblies\Waymakers.dll
+F:\SteamLibrary\steamapps\common\RimWorld\Mods\Waymakers\Source\obj\Debug\Waymakers.csproj.AssemblyReference.cache
+F:\SteamLibrary\steamapps\common\RimWorld\Mods\Waymakers\Source\obj\Debug\Waymakers.GeneratedMSBuildEditorConfig.editorconfig
+F:\SteamLibrary\steamapps\common\RimWorld\Mods\Waymakers\Source\obj\Debug\Waymakers.AssemblyInfoInputs.cache
+F:\SteamLibrary\steamapps\common\RimWorld\Mods\Waymakers\Source\obj\Debug\Waymakers.AssemblyInfo.cs
+F:\SteamLibrary\steamapps\common\RimWorld\Mods\Waymakers\Source\obj\Debug\Waymakers.csproj.CoreCompileInputs.cache
+F:\SteamLibrary\steamapps\common\RimWorld\Mods\Waymakers\Source\obj\Debug\Waymakers.dll

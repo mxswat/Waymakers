@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Waymakers</name>
+  <author>YourName</author>
+  <packageId>waymakers.meme</packageId>
+  <description>The prosperity of civilization depends on connection. Roads, railways, and commerce bind isolated peoples together and allow knowledge and culture to flourish. To create paths is a noble calling.
+
+Adds the Waymakers meme with the Surveyor specialist role, Coordinate Works ability, and rituals celebrating infrastructure.</description>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Ideology</packageId>
+      <displayName>RimWorld - Ideology</displayName>
+    </li>
+    <li>
+      <packageId>Mlie.RailsAndRoadsOfTheRim</packageId>
+      <displayName>Rails and Roads of the Rim (Continued)</displayName>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>Ludeon.RimWorld.Ideology</li>
+    <li>Mlie.RailsAndRoadsOfTheRim</li>
+  </loadAfter>
+</ModMetaData>

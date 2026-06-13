@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "fO8pfqwUdpw=",
+  "success": true,
+  "projectFilePath": "F:\\SteamLibrary\\steamapps\\common\\RimWorld\\Mods\\Waymakers\\Source\\Waymakers.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\massi\\.nuget\\packages\\krafs.rimworld.ref\\1.6.4850\\krafs.rimworld.ref.1.6.4850.nupkg.sha512",
+    "C:\\Users\\massi\\.nuget\\packages\\lib.harmony\\2.2.2\\lib.harmony.2.2.2.nupkg.sha512"
+  ],
+  "logs": []
+}

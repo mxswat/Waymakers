@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThoughtDef>
+    <defName>WM_RoadBuilt_Crude</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>15</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li><label>crude road built</label><description>A simple dirt path connects our people to the wider world.</description><baseMoodEffect>2</baseMoodEffect></li>
+      <li><label>crude road built</label><description>A simple dirt path connects our people to the wider world.</description><baseMoodEffect>3</baseMoodEffect></li>
+      <li><label>crude road built</label><description>A simple dirt path connects our people to the wider world.</description><baseMoodEffect>4</baseMoodEffect></li>
+      <li><label>crude road built</label><description>A simple dirt path connects our people to the wider world.</description><baseMoodEffect>5</baseMoodEffect></li>
+      <li><label>crude road built</label><description>A simple dirt path connects our people to the wider world.</description><baseMoodEffect>6</baseMoodEffect></li>
+      <li><label>crude road built</label><description>A simple dirt path connects our people to the wider world.</description><baseMoodEffect>7</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>WM_RoadBuilt_Basic</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>20</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li><label>road built</label><description>A proper stone road strengthens our connections.</description><baseMoodEffect>5</baseMoodEffect></li>
+      <li><label>road built</label><description>A proper stone road strengthens our connections.</description><baseMoodEffect>6</baseMoodEffect></li>
+      <li><label>road built</label><description>A proper stone road strengthens our connections.</description><baseMoodEffect>7</baseMoodEffect></li>
+      <li><label>road built</label><description>A proper stone road strengthens our connections.</description><baseMoodEffect>8</baseMoodEffect></li>
+      <li><label>road built</label><description>A proper stone road strengthens our connections.</description><baseMoodEffect>9</baseMoodEffect></li>
+      <li><label>road built</label><description>A proper stone road strengthens our connections.</description><baseMoodEffect>10</baseMoodEffect></li>
+      <li><label>road built</label><description>A proper stone road strengthens our connections.</description><baseMoodEffect>11</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>WM_RoadBuilt_Engineered</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>25</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>9</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>10</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>11</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>12</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>13</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>14</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>15</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>WM_RoadBuilt_Advanced</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>30</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li><label>glittering route built</label><description>A gleaming road of plasteel and advanced components now binds civilization together. This is the peak of our craft.</description><baseMoodEffect>13</baseMoodEffect></li>
+      <li><label>glittering route built</label><description>A gleaming road of plasteel and advanced components now binds civilization together. This is the peak of our craft.</description><baseMoodEffect>14</baseMoodEffect></li>
+      <li><label>glittering route built</label><description>A gleaming road of plasteel and advanced components now binds civilization together. This is the peak of our craft.</description><baseMoodEffect>15</baseMoodEffect></li>
+      <li><label>glittering route built</label><description>A gleaming road of plasteel and advanced components now binds civilization together. This is the peak of our craft.</description><baseMoodEffect>16</baseMoodEffect></li>
+      <li><label>glittering route built</label><description>A gleaming road of plasteel and advanced components now binds civilization together. This is the peak of our craft.</description><baseMoodEffect>17</baseMoodEffect></li>
+      <li><label>glittering route built</label><description>A gleaming road of plasteel and advanced components now binds civilization together. This is the peak of our craft.</description><baseMoodEffect>18</baseMoodEffect></li>
+      <li><label>glittering route built</label><description>A gleaming road of plasteel and advanced components now binds civilization together. This is the peak of our craft.</description><baseMoodEffect>19</baseMoodEffect></li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>WM_RecentlyTraveled</defName>
+    <thoughtClass>Thought_Memory</thoughtClass>
+    <durationDays>10</durationDays>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>recently traveled</label>
+        <description>Travel broadens the mind and invigorates the spirit.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+</Defs>

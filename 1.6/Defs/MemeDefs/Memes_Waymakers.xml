@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <MemeDef>
+    <defName>WM_Waymakers</defName>
+    <label>waymakers</label>
+    <description>The prosperity of civilization depends on connection. Roads, railways, and commerce bind isolated peoples together and allow knowledge and culture to flourish. To create paths is a noble calling.</description>
+    <iconPath>UI/Memes/Waymakers</iconPath>
+    <category>Normal</category>
+    <impact>2</impact>
+    <exclusionTags>
+      <li>Waymaker</li>
+    </exclusionTags>
+    <agreeableTraits>
+      <Industriousness>
+        <degree>2</degree>
+      </Industriousness>
+      <SpeedOffset>
+        <degree>2</degree>
+      </SpeedOffset>
+      <Ascetic />
+    </agreeableTraits>
+    <disagreeableTraits>
+      <Industriousness>
+        <degree>-1</degree>
+      </Industriousness>
+    </disagreeableTraits>
+    <generalRules>
+      <rulesStrings>
+        <li>memeAdjective->connected</li>
+        <li>memeAdjective->open</li>
+        <li>memeAdjective->waymaking</li>
+        <li>memeConcept->roads</li>
+        <li>memeConcept->connection</li>
+        <li>memeConcept->travel</li>
+        <li>memeConcept->commerce</li>
+        <li>memeLeaderNoun->surveyor</li>
+        <li>memeLeaderNoun->waymaker</li>
+        <li>memeLeaderNoun->pathfinder</li>
+        <li>memeMoralist->guide</li>
+      </rulesStrings>
+    </generalRules>
+    <symbolPacks>
+      <li>
+        <ideoName>Waymaking</ideoName>
+        <theme>road-building</theme>
+        <adjective>waymaking</adjective>
+        <member>waymaker</member>
+      </li>
+      <li>
+        <ideoName>Pathfinding</ideoName>
+        <theme>path-finding</theme>
+        <adjective>pathfinding</adjective>
+        <member>pathfinder</member>
+      </li>
+    </symbolPacks>
+  </MemeDef>
+
+</Defs>
