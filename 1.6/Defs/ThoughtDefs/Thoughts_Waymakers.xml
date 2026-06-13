@@ -64,18 +64,4 @@
     </stages>
   </ThoughtDef>
 
-  <ThoughtDef>
-    <defName>WM_RecentlyTraveled</defName>
-    <thoughtClass>Thought_Memory</thoughtClass>
-    <durationDays>10</durationDays>
-    <stackLimit>1</stackLimit>
-    <stages>
-      <li>
-        <label>recently traveled</label>
-        <description>Travel broadens the mind and invigorates the spirit.</description>
-        <baseMoodEffect>4</baseMoodEffect>
-      </li>
-    </stages>
-  </ThoughtDef>
-
 </Defs>

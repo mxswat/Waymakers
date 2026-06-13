@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="RoleStatBuff">
+    <defName>WM_CoordinateWorks</defName>
+    <label>coordinate works</label>
+    <description>This person is coordinating construction and logistics, boosting efficiency for everyone nearby.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>True</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+      <li Class="HediffCompProperties_GiveHediffsInRange">
+        <range>9.9</range>
+        <mote>Mote_WorkCommand</mote>
+        <hideMoteWhenNotDrafted>true</hideMoteWhenNotDrafted>
+        <targetingParameters>
+          <canTargetBuildings>false</canTargetBuildings>
+          <canTargetAnimals>false</canTargetAnimals>
+          <canTargetMechs>false</canTargetMechs>
+          <onlyTargetColonists>true</onlyTargetColonists>
+        </targetingParameters>
+        <hediff>WM_CoordinateWorksBuff</hediff>
+      </li>
+    </comps>
+    <isBad>false</isBad>
+  </HediffDef>
+
+  <HediffDef ParentName="WorkRoleAuraBuffHediffBase">
+    <defName>WM_CoordinateWorksBuff</defName>
+    <label>coordinate works</label>
+    <description>This person's construction, hauling, and movement speeds are boosted thanks to being near a surveyor using coordinate works.</description>
+    <debugLabelExtra>other</debugLabelExtra>
+    <stages>
+      <li>
+        <statOffsets>
+          <ConstructionSpeed>0.50</ConstructionSpeed>
+          <GeneralLaborSpeed>0.25</GeneralLaborSpeed>
+          <MoveSpeed>0.10</MoveSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

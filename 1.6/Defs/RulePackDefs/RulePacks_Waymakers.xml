@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RulePackDef>
+    <defName>WM_NamerRoleSurveyor</defName>
+    <include><li>NamerRoleSpecialistUtility</li></include>
+    <rulePack>
+      <rulesStrings>
+        <li>r_roleName->surveyor</li>
+        <li>r_roleName->pathfinder</li>
+        <li>r_roleName->waymaker</li>
+        <li>r_roleName->roadbuilder</li>
+        <li>r_roleName->cartographer</li>
+        <li>firstPart->path</li>
+        <li>firstPart->way</li>
+        <li>firstPart->road</li>
+        <li>firstPart->route</li>
+        <li>firstPart->track</li>
+        <li>firstPart->trail</li>
+        <li>firstPart->bridge</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+</Defs>

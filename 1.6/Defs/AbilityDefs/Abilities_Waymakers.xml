@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <AbilityDef ParentName="RoleAuraBuffBase">
+    <defName>WM_CoordinateWorks</defName>
+    <label>coordinate works</label>
+    <description>Coordinate construction and logistics for nearby workers, boosting their efficiency. Construction speed is significantly increased, while hauling and movement are moderately improved. Lasts 24 hours.</description>
+    <iconPath>UI/Abilities/CoordinateWorks</iconPath>
+    <warmupMoteSocialSymbol>UI/Abilities/CoordinateWorks</warmupMoteSocialSymbol>
+    <showWhenDrafted>false</showWhenDrafted>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <comps>
+      <li Class="CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>WM_CoordinateWorks</hediffDef>
+        <onlyBrain>True</onlyBrain>
+        <onlyApplyToSelf>True</onlyApplyToSelf>
+        <replaceExisting>true</replaceExisting>
+      </li>
+    </comps>
+  </AbilityDef>
+
+</Defs>
