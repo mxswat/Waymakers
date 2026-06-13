@@ -97,8 +97,9 @@ Duration: 24 hours
 Nearby colonists receive:
 
 * Construction speed +50%
-* Hauling speed +25%
 * Move speed +10%
+
+> **Open design:** `GeneralLaborSpeed` was considered for hauling but dropped (Move Speed covers the walking portion). Should the buff persist after leaving the aura radius (enabling road building)? Currently uses a standard link like Production Command.
 
 ### Disabled Work Types
 
@@ -295,25 +296,29 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
   - [x] `exclusionTags`: `Waymaker` tag defined
   - [x] `agreeableTraits`: Industriousness degree 2, SpeedOffset degree 2, Ascetic (using tag-name-as-def workaround)
   - [x] `disagreeableTraits`: Industriousness degree -1 (lazy)
-  - [ ] Raider incompatibility: vanilla Raider has no `exclusionTags` , needs Harmony check
+  - [ ] Raider incompatibility: vanilla Raider has no `exclusionTags`, needs Harmony check
   - [ ] VFEA_Isolationist incompatibility: needs XML patch to add `Waymaker` tag
 
 ## Block 3: Surveyor Specialist Role
 
-- [ ] Create `1.6/Defs/PreceptDefs/Role_Surveyor.xml`
-  - [ ] Role def (`PreceptRoleSingleBase` parent)
-  - [ ] `requiredMemes`: link to `WM_Waymakers`
-  - [ ] Skill requirements: Construction 6+, Intellectual 4+
-  - [ ] `roleDisabledWorkTags`: Cooking, PlantWork, Animals, Artistic
-  - [ ] Passive stat offsets: ConstructionSpeed +0.50, MiningSpeed +0.20, CaravanPackingSpeed +0.50
-  - [ ] `grantedAbilities`: `WM_CoordinateWorks`
+- [x] Create `1.6/Defs/PreceptDefs/Role_Surveyor.xml`
+  - [x] Role def (`PreceptRoleSingleBase` parent)
+  - [x] `requiredMemes`: link to `WM_Waymakers`
+  - [x] Skill requirements: Construction 6+, Intellectual 4+ (`RoleRequirement_MinSkillAny`)
+  - [x] `roleDisabledWorkTags`: Cooking, PlantWork, Animals, Artistic
+  - [x] Passive stat offsets: ConstructionSpeed +0.50, MiningSpeed +0.20 (`RoleEffect_PawnStatOffset`)
+  - [x] `grantedAbilities`: `WM_CoordinateWorks`
+  - [x] RulePackDef for role name generation (Surveyor, Pathfinder, Waymaker, etc.)
 
 ## Block 4: Coordinate Works Ability
 
-- [ ] Create `1.6/Defs/AbilityDefs/CoordinateWorks.xml`
-  - [ ] Cooldown 3 days, duration 24 hours
-  - [ ] Applies hediff to nearby colonists: ConstructionSpeed +50%, HaulingSpeed +25%, MoveSpeed +10%
-- [ ] Create C# CompAbilityEffect for aura buff
+- [x] Create `1.6/Defs/AbilityDefs/Abilities_Waymakers.xml`
+  - [x] Cooldown 3 days, duration 24 hours (via `RoleAuraBuffBase` parent)
+  - [x] Aura applies hediff to nearby colonists: ConstructionSpeed +50%, MoveSpeed +10%
+  - [x] Uses vanilla `HediffCompProperties_GiveHediffsInRange` pattern, no custom C# needed
+- [x] Create `1.6/Defs/HediffDefs/Hediffs_Waymakers.xml`
+  - [x] `WM_CoordinateWorks` (caster aura) and `WM_CoordinateWorksBuff` (nearby buff)
+- [ ] Caravan support: buff vanishes when leaving map (Link comp). See nice-to-haves.
 
 ## Block 5: Rituals
 
@@ -343,25 +348,24 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] Create `Source/` with `.csproj` (net472, Krafs.Rimworld.Ref, Harmony, <ExcludeAssets>runtime)
 - [x] Harmony bootstrapper with manual `harmony.Patch()` calls
 - [x] RotR integration patches (EndConstruction prefix + FinaliseConstructionSite postfix)
-- [x] Reflection-based access (`Traverse`, `AccessTools.Method`) , no compile-time RotR dep
-- [ ] `CompAbilityEffect_CoordinateWorks` (aura buff)
-- [ ] ThoughtWorkers for conditional thoughts
+- [x] Reflection-based access (`Traverse`, `AccessTools.Method`), no compile-time RotR dep
+- [ ] ThoughtWorkers for conditional thoughts (Isolated Settlement)
 
 ## Block 9: Assets
 
-- [x] Meme icon (`Textures/UI/Memes/Waymakers.png`, 128�,128)
-- [ ] Role icon (`Textures/UI/Roles/Surveyor.png`)
-- [ ] Ability icon
+- [x] Meme icon (`Textures/UI/Memes/Waymakers.png`, 128x128)
+- [x] Role icon (`Textures/UI/Roles/Surveyor.png`)
+- [x] Ability icon (`Textures/UI/Abilities/CoordinateWorks.png`)
 - [ ] Ritual icons
 
 ## Block 10: Localization
 
 - [ ] `Languages/English/Keyed/` translations
-- [ ] `Languages/English/DefInjected/` def translations
+- [x] `Languages/English/DefInjected/` def translations (all def types covered)
 
 ---
 
 ## Nice-to-haves
 
-- [ ] RulePackDef for Surveyor name maker (randomized titles like "Chief Surveyor", "Pathfinder", "Master Builder")
-- [ ] Coordinate Works caravan support , ability auras don't work on the world map. Investigate patching `WorldObjectComp_Caravan.AmountOfWork` to boost nearby caravan pawns when a Surveyor is present.
+- [x] RulePackDef for Surveyor name maker (randomized titles like "Chief Surveyor", "Pathfinder", "Master Builder")
+- [ ] Coordinate Works caravan support, ability auras don't work on the world map. Investigate patching `WorldObjectComp_Caravan.AmountOfWork` to boost nearby caravan pawns when a Surveyor is present.
