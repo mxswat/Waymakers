@@ -96,7 +96,7 @@ Duration: 24 hours
 
 Nearby colonists receive:
 
-* Construction speed +50%
+* Construction speed +75%
 * Move speed +10%
 
 > **Open design:** `GeneralLaborSpeed` was considered for hauling but dropped (Move Speed covers the walking portion). Should the buff persist after leaving the aura radius (enabling road building)? Currently uses a standard link like Production Command.
@@ -314,11 +314,10 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 
 - [x] Create `1.6/Defs/AbilityDefs/Abilities_Waymakers.xml`
   - [x] Cooldown 3 days, duration 24 hours (via `RoleAuraBuffBase` parent)
-  - [x] Aura applies hediff to nearby colonists: ConstructionSpeed +50%, MoveSpeed +10%
-  - [x] Uses vanilla `HediffCompProperties_GiveHediffsInRange` pattern, no custom C# needed
-- [x] Create `1.6/Defs/HediffDefs/Hediffs_Waymakers.xml`
-  - [x] `WM_CoordinateWorks` (caster aura) and `WM_CoordinateWorksBuff` (nearby buff)
-- [ ] Caravan support: buff vanishes when leaving map (Link comp). See nice-to-haves.
+  - [x] Aura applies +75% ConstructionSpeed to nearby colonists (via HediffComp_GiveHediffsInRange)
+  - [x] Ability effect radius doubled to 19.8 (preview circle + aura + link lines)
+  - [x] Caravan support: patch on `AmountOfWork` applies ×1.75 multiplier when caster hediff active
+  - [x] Uses vanilla comps, no custom C# needed
 
 ## Block 5: Rituals
 
@@ -367,5 +366,5 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 
 ## Nice-to-haves
 
-- [x] RulePackDef for Surveyor name maker (randomized titles like "Chief Surveyor", "Pathfinder", "Master Builder")
-- [ ] Coordinate Works caravan support, ability auras don't work on the world map. Investigate patching `WorldObjectComp_Caravan.AmountOfWork` to boost nearby caravan pawns when a Surveyor is present.
+- [x] RulePackDef for Surveyor name maker
+- [x] Coordinate Works caravan support — patched `AmountOfWork` (×1.75 when caster hediff active)
