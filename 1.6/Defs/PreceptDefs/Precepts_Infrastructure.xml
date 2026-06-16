@@ -4,6 +4,7 @@
   <IssueDef>
     <defName>WM_Infrastructure</defName>
     <label>infrastructure</label>
+    <iconPath>UI/Issues/Infrastructure</iconPath>
     <description>Roads, railways, and the connections they create.</description>
   </IssueDef>
 
