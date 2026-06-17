@@ -44,7 +44,7 @@
         
       </li>
       <li>
-        <defaultDuty>Spectate</defaultDuty>
+        <defaultDuty>SpectateDirectionSociallyActive</defaultDuty>
         <endTriggers>
           <li Class="StageEndTrigger_DurationPercentage"><percentage>1</percentage></li>
         </endTriggers>
@@ -95,7 +95,7 @@
         
       </li>
       <li>
-        <defaultDuty>Spectate</defaultDuty>
+        <defaultDuty>SpectateDirectionSociallyActive</defaultDuty>
         <endTriggers>
           <li Class="StageEndTrigger_DurationPercentage"><percentage>1</percentage></li>
         </endTriggers>
