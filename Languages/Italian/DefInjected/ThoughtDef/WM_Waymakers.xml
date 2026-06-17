@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <WM_RoadBuilt_Crude.label>strada sterrata costruita</WM_RoadBuilt_Crude.label>
+  <WM_RoadBuilt_Basic.label>strada costruita</WM_RoadBuilt_Basic.label>
+  <WM_RoadBuilt_Engineered.label>rotta ingegnerizzata costruita</WM_RoadBuilt_Engineered.label>
+  <WM_RoadBuilt_Advanced.label>rotta scintillante costruita</WM_RoadBuilt_Advanced.label>
+  <WM_NoRecentRoad.label>nessuna strada recente</WM_NoRecentRoad.label>
+  <WM_GroundbreakingTerrible.label>inaugurazione terribile</WM_GroundbreakingTerrible.label>
+  <WM_GroundbreakingLackluster.label>inaugurazione mediocre</WM_GroundbreakingLackluster.label>
+  <WM_GroundbreakingGood.label>buona inaugurazione</WM_GroundbreakingGood.label>
+  <WM_GroundbreakingGlorious.label>inaugurazione gloriosa</WM_GroundbreakingGlorious.label>
+  <WM_OpeningTerrible.label>terribile apertura della linea</WM_OpeningTerrible.label>
+  <WM_OpeningLackluster.label>mediocre apertura della linea</WM_OpeningLackluster.label>
+  <WM_OpeningGood.label>buona apertura della linea</WM_OpeningGood.label>
+  <WM_OpeningGlorious.label>gloriosa apertura della linea</WM_OpeningGlorious.label>
+</LanguageData>

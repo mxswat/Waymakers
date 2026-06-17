@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <WM_IdeoRole_Surveyor.label>agrimensore</WM_IdeoRole_Surveyor.label>
+  <WM_IdeoRole_Surveyor.description>Uno specialista dedicato alle infrastrutture e alla logistica. Gli agrimensori coordinano la costruzione di strade, gestiscono le risorse e assicurano che gli insediamenti restino connessi. La loro presenza accelera la costruzione e l'estrazione mineraria, e possono ispirare i lavoratori vicini con l'abilita Coordinamento Lavori.</WM_IdeoRole_Surveyor.description>
+  <WM_Infrastructure_Required.label>richiesto</WM_Infrastructure_Required.label>
+  <WM_Infrastructure_Required.description>Dobbiamo costruire strade e ferrovie per connettere i nostri insediamenti.\n\nCompletare una strada ispira il nostro popolo:\n  - Bonus d'umore variabile (+2 a +23 umore per strada)\n  - Strade di qualita superiore e piu tessere costruite aumentano l'effetto\n\nNon farlo e un marchio di vergogna.</WM_Infrastructure_Required.description>
+  <WM_Ritual_GroundbreakingCeremony.label>cerimonia di inaugurazione</WM_Ritual_GroundbreakingCeremony.label>
+  <WM_Ritual_GroundbreakingCeremony.description>Una cerimonia guidata dall'Agrimensore per segnare l'inizio di un grande progetto. I partecipanti ricevono un bonus d'umore in base alla qualita della cerimonia, e con buoni risultati un bonus temporaneo alla velocita di costruzione.</WM_Ritual_GroundbreakingCeremony.description>
+  <WM_Ritual_OpeningOfTheLine.label>apertura della linea</WM_Ritual_OpeningOfTheLine.label>
+  <WM_Ritual_OpeningOfTheLine.description>Una cerimonia guidata dall'Agrimensore per celebrare il completamento di una strada o ferrovia. Da fare preferibilmente dopo aver collegato con successo due punti sulla mappa mondiale. Con risultati positivi, carovane amichevoli arriveranno, attirate dalla notizia della nuova rotta.</WM_Ritual_OpeningOfTheLine.description>
+</LanguageData>

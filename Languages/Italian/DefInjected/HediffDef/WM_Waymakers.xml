@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <WM_CoordinateWorks.label>coordinamento lavori</WM_CoordinateWorks.label>
+  <WM_CoordinateWorks.description>Questa persona sta coordinando costruzione e logistica, aumentando l'efficienza di tutti nelle vicinanze del 75%. Quando presente in una carovana, la costruzione di strade e accelerata del 75%.</WM_CoordinateWorks.description>
+  <WM_CoordinateWorksBuff.label>coordinamento lavori</WM_CoordinateWorksBuff.label>
+  <WM_CoordinateWorksBuff.description>La velocita di costruzione di questa persona e aumentata grazie alla vicinanza di un agrimensore che usa coordinamento lavori.</WM_CoordinateWorksBuff.description>
+  <WM_GroundbreakingBuff.label>ispirazione da inaugurazione</WM_GroundbreakingBuff.label>
+  <WM_GroundbreakingBuff.description>Ispirato dalla cerimonia di inaugurazione, la velocita di costruzione di questa persona e aumentata.</WM_GroundbreakingBuff.description>
+</LanguageData>
