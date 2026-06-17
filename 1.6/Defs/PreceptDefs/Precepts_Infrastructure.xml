@@ -12,7 +12,7 @@
     <defName>WM_Infrastructure_Required</defName>
     <issue>WM_Infrastructure</issue>
     <label>required</label>
-    <description>We must build roads and railways to connect our settlements. Successfully completing a road inspires our people based on its quality and length. Failing to do so is a mark of shame.</description>
+    <description>We must build roads and railways to connect our settlements. Successfully completing a road inspires our people with a variable mood boost depending on the road's quality and length (+2 to +30 mood). Failing to do so is a mark of shame.</description>
     <impact>High</impact>
     <displayOrderInIssue>0</displayOrderInIssue>
     <requiredMemes>
@@ -23,7 +23,7 @@
         <thought>WM_NoRecentRoad</thought>
         <tooltipShowMoodRange>true</tooltipShowMoodRange>
         <thoughtStageDescriptions>
-          <li>More than {DAYSSINCELASTROADTHRESHOLD} days since our last road was built</li>
+          <li>More than {DAYSSINCELASTROADTHRESHOLD} days since our last road was built. Completing roads inspires our people (+2 to +30 mood depending on quality and length).</li>
         </thoughtStageDescriptions>
       </li>
     </comps>

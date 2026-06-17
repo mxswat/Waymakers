@@ -8,13 +8,20 @@ Adds the **Waymakers** meme, a Normal meme (impact 2) for builders, traders, and
 
 ### Meme features
 - Trait preferences: Industrious, Jogger, Ascetic; dislikes Lazy
-- Incompatible with Isolationist memes
+- Incompatible with Raider and Isolationist memes
 
 ### Surveyor Specialist
 - Requires Construction 6+ and Intellectual 4+
 - Passive: +50% Construction Speed, +20% Mining Speed
 - Disabled work: Cooking, Plants, Animals, Art
-- **Coordinate Works** ability: aura buff to nearby colonists (+50% build, +25% haul, +10% move)
+- **Coordinate Works** ability: +75% build speed aura (19.8 tile radius), caravan road building ×1.75
+
+### Rituals
+- **Groundbreaking Ceremony** , led by the Surveyor, grants mood bonus and construction speed buff scaled by quality
+- **Opening of the Line** , led by the Surveyor, grants mood bonus and attracts trader caravans on positive outcomes
+
+### Forced Precept
+- **Infrastructure Required** , -10 mood after 30 days without building a road (30-day grace period for new colonies)
 
 ### Mood thoughts
 Four tier-based stacking thoughts triggered by road/rail completion:

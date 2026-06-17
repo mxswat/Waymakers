@@ -87,7 +87,6 @@ None.
 
 * Construction speed +50%
 * Mining speed +20%
-* Caravan packing speed +50%
 
 ### Ability
 

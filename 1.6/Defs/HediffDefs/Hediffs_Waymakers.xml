@@ -4,7 +4,7 @@
   <HediffDef ParentName="RoleStatBuff">
     <defName>WM_CoordinateWorks</defName>
     <label>coordinate works</label>
-    <description>This person is coordinating construction and logistics, boosting efficiency for everyone nearby.</description>
+    <description>This person is coordinating construction and logistics, boosting efficiency for everyone nearby by 75%. When present in a caravan, road building is also accelerated by 75%.</description>
     <hediffClass>HediffWithComps</hediffClass>
     <comps>
       <li Class="HediffCompProperties_Disappears">

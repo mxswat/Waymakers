@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
   <WM_CoordinateWorks.label>coordinate works</WM_CoordinateWorks.label>
-  <WM_CoordinateWorks.description>This person is coordinating construction and logistics, boosting efficiency for everyone nearby.</WM_CoordinateWorks.description>
+  <WM_CoordinateWorks.description>This person is coordinating construction and logistics, boosting efficiency for everyone nearby by 75%. When present in a caravan, road building is also accelerated by 75%.</WM_CoordinateWorks.description>
   <WM_CoordinateWorksBuff.label>coordinate works</WM_CoordinateWorksBuff.label>
-  <WM_CoordinateWorksBuff.description>This person's construction, hauling, and movement speeds are boosted thanks to being near a surveyor using coordinate works.</WM_CoordinateWorksBuff.description>
+  <WM_CoordinateWorksBuff.description>This person's construction speed is boosted thanks to being near a surveyor using coordinate works.</WM_CoordinateWorksBuff.description>
 </LanguageData>
