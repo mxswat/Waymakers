@@ -4,7 +4,7 @@
   <RitualOutcomeEffectDef>
     <defName>WM_GroundbreakingCeremony</defName>
     <description>Depending on ritual quality, participants will get between {MINMOOD} and {MAXMOOD} mood for {MOODDAYS} days. The Surveyor sets the tone.</description>
-    <workerClass>RitualOutcomeEffectWorker_FromQuality</workerClass>
+    <workerClass>Waymakers.RitualOutcomeEffectWorker_WMGroundbreaking</workerClass>
     <allowAttachableOutcome>false</allowAttachableOutcome>
     <comps>
       <li Class="RitualOutcomeComp_ParticipantCount">
@@ -49,7 +49,7 @@
   <RitualOutcomeEffectDef>
     <defName>WM_OpeningOfTheLine</defName>
     <description>Depending on ritual quality, participants will get between {MINMOOD} and {MAXMOOD} mood for {MOODDAYS} days. The Surveyor commemorates the new connection.</description>
-    <workerClass>RitualOutcomeEffectWorker_FromQuality</workerClass>
+    <workerClass>Waymakers.RitualOutcomeEffectWorker_WMOpening</workerClass>
     <allowAttachableOutcome>false</allowAttachableOutcome>
     <comps>
       <li Class="RitualOutcomeComp_ParticipantCount">

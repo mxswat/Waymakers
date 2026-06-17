@@ -55,4 +55,50 @@
     <isBad>false</isBad>
   </HediffDef>
 
+  <HediffDef>
+    <defName>WM_GroundbreakingBuff</defName>
+    <label>groundbreaking inspiration</label>
+    <description>Inspired by the groundbreaking ceremony, this person's construction speed is increased.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.52, 1, 0.95)</defaultLabelColor>
+    <debugLabelExtra>other</debugLabelExtra>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>True</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <ConstructionSpeed>0.50</ConstructionSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+    <isBad>false</isBad>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>WM_OpeningBuff</defName>
+    <label>pathfinding rush</label>
+    <description>Energized by the opening ceremony, this person's movement speed is increased.</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.85, 0.6, 1.0)</defaultLabelColor>
+    <debugLabelExtra>other</debugLabelExtra>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>True</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+    </comps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MoveSpeed>0.25</MoveSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+    <isBad>false</isBad>
+  </HediffDef>
+
 </Defs>

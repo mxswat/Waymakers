@@ -15,10 +15,14 @@ namespace Waymakers
 
         private static MemeDef memeDef;
         private static HediffDef coordinateWorksHediff;
+        private static HediffDef groundbreakingBuffDef;
+        private static HediffDef openingBuffDef;
         internal static int lastRoadBuildTick = -1;
 
         public static MemeDef Meme => memeDef;
         public static HediffDef CoordinateWorksHediff => coordinateWorksHediff;
+        public static HediffDef GroundbreakingBuffDef => groundbreakingBuffDef;
+        public static HediffDef OpeningBuffDef => openingBuffDef;
 
         static WaymakersMod()
         {
@@ -60,6 +64,8 @@ namespace Waymakers
 
             memeDef = DefDatabase<MemeDef>.GetNamed("WM_Waymakers");
             coordinateWorksHediff = DefDatabase<HediffDef>.GetNamed("WM_CoordinateWorks");
+            groundbreakingBuffDef = DefDatabase<HediffDef>.GetNamed("WM_GroundbreakingBuff");
+            openingBuffDef = DefDatabase<HediffDef>.GetNamed("WM_OpeningBuff");
 
             if (memeDef == null)
                 Log.Error("[Waymakers] MemeDef 'WM_Waymakers' not found.");
@@ -246,6 +252,46 @@ namespace Waymakers
         public IEnumerable<NamedArgument> GetDescriptionArgs()
         {
             yield return ThresholdDays.Named("DAYSSINCELASTROADTHRESHOLD");
+        }
+    }
+
+    public class RitualOutcomeEffectWorker_WMGroundbreaking : RitualOutcomeEffectWorker_FromQuality
+    {
+        public RitualOutcomeEffectWorker_WMGroundbreaking() { }
+        public RitualOutcomeEffectWorker_WMGroundbreaking(RitualOutcomeEffectDef def) : base(def) { }
+
+        public override void Apply(float progress, Dictionary<Pawn, int> totalPresence, LordJob_Ritual jobRitual)
+        {
+            base.Apply(progress, totalPresence, jobRitual);
+            float quality = GetQuality(jobRitual, progress);
+            var hediff = WaymakersMod.GroundbreakingBuffDef;
+            if (hediff == null || quality <= 0.25f) return;
+            foreach (var kvp in totalPresence)
+            {
+                // Hediff added to brain for UI visibility; ticksToDisappear set manually
+                // (aura hediffs get this from GiveHediffsInRange, but ritual hediffs don't)
+                var h = kvp.Key.health.AddHediff(hediff, kvp.Key.health.hediffSet.GetBrain());
+                h.TryGetComp<HediffComp_Disappears>().ticksToDisappear = 60000;
+            }
+        }
+    }
+
+    public class RitualOutcomeEffectWorker_WMOpening : RitualOutcomeEffectWorker_FromQuality
+    {
+        public RitualOutcomeEffectWorker_WMOpening() { }
+        public RitualOutcomeEffectWorker_WMOpening(RitualOutcomeEffectDef def) : base(def) { }
+
+        public override void Apply(float progress, Dictionary<Pawn, int> totalPresence, LordJob_Ritual jobRitual)
+        {
+            base.Apply(progress, totalPresence, jobRitual);
+            float quality = GetQuality(jobRitual, progress);
+            var hediff = WaymakersMod.OpeningBuffDef;
+            if (hediff == null || quality <= 0.25f) return;
+            foreach (var kvp in totalPresence)
+            {
+                var h = kvp.Key.health.AddHediff(hediff, kvp.Key.health.hediffSet.GetBrain());
+                h.TryGetComp<HediffComp_Disappears>().ticksToDisappear = 60000;
+            }
         }
     }
 }
