@@ -41,6 +41,10 @@ dotnet build "Source\Waymakers.csproj"
 
 Targets .NET Framework 4.7.2. Uses reflection-based Harmony patches against RotR, no compile-time dependency on the RotR DLL.
 
+## Credits
+
+- Art by Nekl
+
 ## License
 
 GPL-3.0

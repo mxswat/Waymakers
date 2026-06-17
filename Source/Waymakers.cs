@@ -265,7 +265,7 @@ namespace Waymakers
             base.Apply(progress, totalPresence, jobRitual);
             float quality = GetQuality(jobRitual, progress);
             var hediff = WaymakersMod.GroundbreakingBuffDef;
-            if (hediff == null || quality <= 0.25f) return;
+            if (hediff == null || quality <= 0.5f) return;
             foreach (var kvp in totalPresence)
             {
                 // Hediff added to brain for UI visibility; ticksToDisappear set manually
@@ -286,11 +286,24 @@ namespace Waymakers
             base.Apply(progress, totalPresence, jobRitual);
             float quality = GetQuality(jobRitual, progress);
             var hediff = WaymakersMod.OpeningBuffDef;
-            if (hediff == null || quality <= 0.25f) return;
-            foreach (var kvp in totalPresence)
+            if (hediff != null && quality > 0.5f)
             {
-                var h = kvp.Key.health.AddHediff(hediff, kvp.Key.health.hediffSet.GetBrain());
-                h.TryGetComp<HediffComp_Disappears>().ticksToDisappear = 60000;
+                float severity = quality < 0.6f ? 0.33f : (quality < 0.8f ? 0.66f : 1.0f);
+                foreach (var kvp in totalPresence)
+                {
+                    var h = kvp.Key.health.AddHediff(hediff, kvp.Key.health.hediffSet.GetBrain());
+                    h.Severity = severity;
+                    h.TryGetComp<HediffComp_Disappears>().ticksToDisappear = 60000;
+                }
+            }
+            // Spawn trade caravan or travelers to celebrate the new route
+            if (quality > 0.5f && jobRitual.Map != null && jobRitual.Map.IsPlayerHome)
+            {
+                var incident = quality > 0.7f
+                    ? IncidentDefOf.TraderCaravanArrival
+                    : IncidentDefOf.TravelerGroup;
+                var parms = StorytellerUtility.DefaultParmsNow(incident.category, jobRitual.Map);
+                incident.Worker.TryExecute(parms);
             }
         }
     }

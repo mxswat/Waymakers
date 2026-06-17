@@ -71,6 +71,16 @@
     <stages>
       <li>
         <statOffsets>
+          <ConstructionSpeed>0.25</ConstructionSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <statOffsets>
+          <ConstructionSpeed>0.35</ConstructionSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <statOffsets>
           <ConstructionSpeed>0.50</ConstructionSpeed>
         </statOffsets>
       </li>
@@ -92,6 +102,16 @@
       <li Class="HediffCompProperties_DisappearsOnDeath"/>
     </comps>
     <stages>
+      <li>
+        <statOffsets>
+          <MoveSpeed>0.10</MoveSpeed>
+        </statOffsets>
+      </li>
+      <li>
+        <statOffsets>
+          <MoveSpeed>0.17</MoveSpeed>
+        </statOffsets>
+      </li>
       <li>
         <statOffsets>
           <MoveSpeed>0.25</MoveSpeed>
