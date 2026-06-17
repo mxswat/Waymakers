@@ -4,4 +4,13 @@
   <WM_RoadBuilt_Basic.label>road built</WM_RoadBuilt_Basic.label>
   <WM_RoadBuilt_Engineered.label>engineered route built</WM_RoadBuilt_Engineered.label>
   <WM_RoadBuilt_Advanced.label>glittering route built</WM_RoadBuilt_Advanced.label>
+  <WM_NoRecentRoad.label>no recent road built</WM_NoRecentRoad.label>
+  <WM_GroundbreakingTerrible.label>terrible groundbreaking</WM_GroundbreakingTerrible.label>
+  <WM_GroundbreakingLackluster.label>boring groundbreaking</WM_GroundbreakingLackluster.label>
+  <WM_GroundbreakingGood.label>good groundbreaking</WM_GroundbreakingGood.label>
+  <WM_GroundbreakingGlorious.label>glorious groundbreaking</WM_GroundbreakingGlorious.label>
+  <WM_OpeningTerrible.label>terrible opening of the line</WM_OpeningTerrible.label>
+  <WM_OpeningLackluster.label>boring opening of the line</WM_OpeningLackluster.label>
+  <WM_OpeningGood.label>good opening of the line</WM_OpeningGood.label>
+  <WM_OpeningGlorious.label>glorious opening of the line</WM_OpeningGlorious.label>
 </LanguageData>

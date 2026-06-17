@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <WM_IdeoRole_Surveyor.label>surveyor</WM_IdeoRole_Surveyor.label>
+  <WM_IdeoRole_Surveyor.description>A specialist dedicated to infrastructure and logistics. Surveyors coordinate road-building efforts, manage resources, and ensure settlements remain connected. Their presence accelerates construction and mining, and they can inspire nearby workers with the Coordinate Works ability.</WM_IdeoRole_Surveyor.description>
+  <WM_Infrastructure_Required.label>required</WM_Infrastructure_Required.label>
+  <WM_Infrastructure_Required.description>We must build roads and railways to connect our settlements. Successfully completing a road inspires our people with a variable mood boost depending on the road's quality and length (+2 to +30 mood). Failing to do so is a mark of shame.</WM_Infrastructure_Required.description>
+  <WM_Ritual_GroundbreakingCeremony.label>groundbreaking ceremony</WM_Ritual_GroundbreakingCeremony.label>
+  <WM_Ritual_GroundbreakingCeremony.description>A ceremony led by the Surveyor to mark the beginning of a major project. Participants receive a mood boost based on the quality of the ceremony, and on good outcomes a timed construction speed buff.</WM_Ritual_GroundbreakingCeremony.description>
+  <WM_Ritual_OpeningOfTheLine.label>opening of the line</WM_Ritual_OpeningOfTheLine.label>
+  <WM_Ritual_OpeningOfTheLine.description>A ceremony led by the Surveyor to celebrate the completion of a road or railway. Best performed after successfully connecting two points on the world map. On positive outcomes friendly caravans will arrive, drawn by word of the new route.</WM_Ritual_OpeningOfTheLine.description>
+</LanguageData>
