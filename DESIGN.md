@@ -35,6 +35,8 @@ These philosophies are fundamentally opposed.
 ### Infrastructure Required
 -10 mood after 30 days without road building. 30-day grace period for new colonies.
 
+Completing roads inspires followers (+2 to +30 mood depending on road quality and tile length). Each quality tier stacks; same tier replaces.
+
 ---
 
 # Precepts More Likely To Appear
