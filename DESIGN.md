@@ -265,12 +265,14 @@ mood = baseMood[tier] + (legs / 3)
 durationDays = 5 + legs  (capped per tier: Crude 15d, Basic 20d, Engineered 25d, Advanced 30d)
 ```
 
-| Tier         | baseMood | Example roads                                     | 1-leg | 6-leg |
-|--------------|----------|---------------------------------------------------|-------|-------|
-| Crude        | +2       | DirtPath, DirtRoad                                | +2    | +4    |
-| Basic        | +5       | StoneRoad                                         | +5    | +7    |
-| Engineered   | +9       | Asphalt, Railroad, RailTunnel, RailOverpass       | +9    | +11   |
-| Advanced     | +13      | GlitterRoad, Glitterrail, GlitterOverpass         | +13   | +15   |
+| Tier         | baseMood | Example roads                                     | 1-leg | 6-leg | 30-leg |
+|--------------|----------|---------------------------------------------------|-------|-------|--------|
+| Crude        | +2       | DirtPath, DirtRoad                                | +2    | +4    | +12    |
+| Basic        | +5       | StoneRoad                                         | +5    | +7    | +15    |
+| Engineered   | +9       | Asphalt, Railroad, RailTunnel, RailOverpass       | +9    | +11   | +19    |
+| Advanced     | +13      | GlitterRoad, Glitterrail, GlitterOverpass         | +13   | +15   | +23    |
+
+Tiers stack — building all 4 gives cumulative mood bonuses.
 
 ---
 
