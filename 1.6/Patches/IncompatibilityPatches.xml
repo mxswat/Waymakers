@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <!-- Make Waymakers incompatible with Raider -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/MemeDef[defName="Raider"]</xpath>
+    <value>
+      <exclusionTags>
+        <li>AntagonizesRaider</li>
+      </exclusionTags>
+    </value>
+  </Operation>
+
+  <!-- Make Waymakers incompatible with VFEA_Isolationist (Vanilla Memes Expanded) -->
+  <Operation Class="PatchOperationAdd" MayRequire="VanillaExpanded.VMemesE">
+    <xpath>/Defs/MemeDef[defName="VFEA_Isolationist"]/exclusionTags</xpath>
+    <value>
+      <li>AntagonizesIsolationist</li>
+    </value>
+  </Operation>
+
+</Patch>

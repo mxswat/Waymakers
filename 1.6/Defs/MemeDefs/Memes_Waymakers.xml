@@ -10,6 +10,8 @@
     <impact>2</impact>
     <exclusionTags>
       <li>Waymaker</li>
+      <li>AntagonizesRaider</li>
+      <li>AntagonizesIsolationist</li>
     </exclusionTags>
     <agreeableTraits>
       <Industriousness>
