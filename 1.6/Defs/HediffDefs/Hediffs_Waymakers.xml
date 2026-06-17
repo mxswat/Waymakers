@@ -70,16 +70,19 @@
     </comps>
     <stages>
       <li>
+        <minSeverity>0</minSeverity>
         <statOffsets>
           <ConstructionSpeed>0.25</ConstructionSpeed>
         </statOffsets>
       </li>
       <li>
+        <minSeverity>0.33</minSeverity>
         <statOffsets>
           <ConstructionSpeed>0.35</ConstructionSpeed>
         </statOffsets>
       </li>
       <li>
+        <minSeverity>0.66</minSeverity>
         <statOffsets>
           <ConstructionSpeed>0.50</ConstructionSpeed>
         </statOffsets>

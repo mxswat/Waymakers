@@ -20,20 +20,21 @@
         <li>firstPart->bridge</li>
       </rulesStrings>
     </rulePack>
+  </RulePackDef>
+
   <RulePackDef>
     <defName>WM_NamerRitualGroundbreaking</defName>
     <include><li>NamerRitualFestival</li></include>
     <rulePack>
       <rulesStrings>
-        <li>r_festivalNoun->groundbreaking</li>
-        <li>r_festivalNoun->groundbreaking ceremony</li>
-        <li>r_festivalNoun->first stone</li>
-        <li>r_festivalNoun->first stone ceremony</li>
-        <li>r_festivalNoun->blueprint signing</li>
-        <li>r_festivalNoun->foundation day</li>
-        <li>r_festivalNoun->surveyor's blessing</li>
-        <li>r_festivalNoun->pathbreaking</li>
-        <li>r_festivalNoun->groundbreaking celebration</li>
+        <li>r_ritualName->groundbreaking</li>
+        <li>r_ritualName->groundbreaking ceremony</li>
+        <li>r_ritualName->first stone</li>
+        <li>r_ritualName->first stone ceremony</li>
+        <li>r_ritualName->blueprint signing</li>
+        <li>r_ritualName->foundation day</li>
+        <li>r_ritualName->surveyor's blessing</li>
+        <li>r_ritualName->pathbreaking</li>
       </rulesStrings>
     </rulePack>
   </RulePackDef>
@@ -43,14 +44,14 @@
     <include><li>NamerRitualFestival</li></include>
     <rulePack>
       <rulesStrings>
-        <li>r_festivalNoun->opening of the line</li>
-        <li>r_festivalNoun->line opening</li>
-        <li>r_festivalNoun->ribbon cutting</li>
-        <li>r_festivalNoun->route blessing</li>
-        <li>r_festivalNoun->road celebration</li>
-        <li>r_festivalNoun->connection festival</li>
-        <li>r_festivalNoun->way opening</li>
-        <li>r_festivalNoun->path opening</li>
+        <li>r_ritualName->opening of the line</li>
+        <li>r_ritualName->line opening</li>
+        <li>r_ritualName->ribbon cutting</li>
+        <li>r_ritualName->route blessing</li>
+        <li>r_ritualName->road celebration</li>
+        <li>r_ritualName->connection festival</li>
+        <li>r_ritualName->way opening</li>
+        <li>r_ritualName->path opening</li>
       </rulesStrings>
     </rulePack>
   </RulePackDef>
