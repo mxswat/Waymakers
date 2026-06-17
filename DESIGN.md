@@ -142,7 +142,29 @@ Ritual behavior:
 - Target: GatheringSpot or Altar (vanilla)
 - Required role: Surveyor (substitutable if none assigned)
 - Duration: ~6,250 ticks (~4 hours)
-- Outcome quality scales with participant count and Surveyor's ConstructionSpeed stat
+- Always available (canStartAnytime + alwaysStartAnytime)
+- Outcome quality: ParticipantCount curve + Surveyor Construction skill (PawnSkill)
+
+Surveyor skill curve (Construction level → quality bonus):
+| Skill | Bonus |
+|-------|-------|
+| 4     | +0%   |
+| 6     | +25%  |
+| 8     | +35%  |
+| 10    | +45%  |
+| 14    | +55%  |
+| 18    | +65%  |
+| 20    | +80%  |
+
+Participant count curve:
+| Count | Bonus |
+|-------|-------|
+| 1     | +0%   |
+| 2     | +10%  |
+| 4     | +25%  |
+| 7     | +40%  |
+| 10    | +50%  |
+| 13    | +60%  |
 
 Outcome tiers (mood memory):
 | Tier | Mood | Duration |
@@ -162,7 +184,8 @@ Ritual behavior:
 - Target: GatheringSpot or Altar (vanilla)
 - Required role: Surveyor (substitutable if none assigned)
 - Duration: ~6,250 ticks (~4 hours)
-- Outcome quality scales with participant count and Surveyor's SocialImpact stat
+- Always available (canStartAnytime + alwaysStartAnytime)
+- Outcome quality: ParticipantCount + Construction skill (PawnSkill, ~70% weight) + SocialImpact (PawnStatScaled, ~30% weight)
 
 Outcome tiers (mood memory):
 | Tier | Mood | Duration |
@@ -369,7 +392,8 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] Create `Ritual_Behaviors_Waymakers.xml` , Surveyor role, speech + socialize stages
 - [x] Create `Ritual_Outcomes_Waymakers.xml` , 4 quality tiers each, mood memories
 - [x] Create `Precepts_Rituals_Waymakers.xml` , links both rituals to `WM_Waymakers`
-- [x] Outcome quality scales with participant count and Surveyor stats
+- [x] Outcome quality: PawnSkill (Construction) for both; PawnStatScaled (SocialImpact) for Opening
+- [x] Participant count curve: +10% at 2 pawns, scaling to +60% at 13
 - [x] Using vanilla components only (no custom C# for outcomes)
 - [ ] Add inspiration chance, stat buffs, and visitor spawning via custom workers (nice-to-have)
 
