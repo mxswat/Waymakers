@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RitualPatternDef>
+    <defName>WM_GroundbreakingCeremony</defName>
+    <nameMaker>NamerRitualFestival</nameMaker>
+    <iconPathOverride>UI/Icons/Rituals/WM_GroundbreakingCeremony</iconPathOverride>
+    <ritualExpectedDesc>When a new project begins, {MEMBERS} can hold a groundbreaking ceremony led by the Surveyor.</ritualExpectedDesc>
+    <canStartAnytime>true</canStartAnytime>
+    <alwaysStartAnytime>true</alwaysStartAnytime>
+    <ritualObligationTargetFilter>GatheringSpotOrAltar</ritualObligationTargetFilter>
+    <ritualBehavior>WM_GroundbreakingCeremony</ritualBehavior>
+    <ritualOutcomeEffect>WM_GroundbreakingCeremony</ritualOutcomeEffect>
+    <tags>
+      <li>WM_Groundbreaking</li>
+    </tags>
+    <patternGroupTag>WM_Groundbreaking</patternGroupTag>
+  </RitualPatternDef>
+
+  <RitualPatternDef>
+    <defName>WM_OpeningOfTheLine</defName>
+    <nameMaker>NamerRitualFestival</nameMaker>
+    <iconPathOverride>UI/Icons/Rituals/WM_OpeningOfTheLine</iconPathOverride>
+    <ritualExpectedDesc>When a road or railway is completed, {MEMBERS} can celebrate with an opening ceremony led by the Surveyor.</ritualExpectedDesc>
+    <canStartAnytime>true</canStartAnytime>
+    <alwaysStartAnytime>true</alwaysStartAnytime>
+    <ritualObligationTargetFilter>GatheringSpotOrAltar</ritualObligationTargetFilter>
+    <ritualBehavior>WM_OpeningOfTheLine</ritualBehavior>
+    <ritualOutcomeEffect>WM_OpeningOfTheLine</ritualOutcomeEffect>
+    <tags>
+      <li>WM_Opening</li>
+    </tags>
+    <patternGroupTag>WM_Opening</patternGroupTag>
+  </RitualPatternDef>
+
+</Defs>

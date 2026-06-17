@@ -128,7 +128,7 @@ New colonies get a 30-day grace period starting from the settlement date.
 
 # Required Rituals
 
-None.
+None. Both rituals are unlocked by the meme but optional.
 
 ---
 
@@ -136,25 +136,43 @@ None.
 
 ## Groundbreaking Ceremony
 
-Celebrates the beginning of a major project.
+Celebrates the beginning of a major project. Led by the Surveyor.
 
-Possible outcomes:
+Ritual behavior:
+- Target: GatheringSpot or Altar (vanilla)
+- Required role: Surveyor (substitutable if none assigned)
+- Duration: ~6,250 ticks (~4 hours)
+- Outcome quality scales with participant count and Surveyor's ConstructionSpeed stat
 
-* Mood bonus.
-* Inspiration chance.
-* Temporary construction speed bonus.
+Outcome tiers (mood memory):
+| Tier | Mood | Duration |
+|------|------|----------|
+| Terrible | -6 | 3 days |
+| Lackluster | -2 | 5 days |
+| Good | +4 | 8 days |
+| Glorious | +8 | 12 days |
 
----
+> **Note:** Inspiration chance and construction speed buff require custom C# outcome workers. Can be added later.
 
 ## Opening of the Line
 
-Celebrates the completion of a road or railway.
+Celebrates the completion of a road or railway. Led by the Surveyor.
 
-Possible outcomes:
+Ritual behavior:
+- Target: GatheringSpot or Altar (vanilla)
+- Required role: Surveyor (substitutable if none assigned)
+- Duration: ~6,250 ticks (~4 hours)
+- Outcome quality scales with participant count and Surveyor's SocialImpact stat
 
-* Mood bonus.
-* Friendly visitors.
-* Temporary caravan movement speed bonus.
+Outcome tiers (mood memory):
+| Tier | Mood | Duration |
+|------|------|----------|
+| Terrible | -6 | 3 days |
+| Lackluster | -2 | 5 days |
+| Good | +4 | 8 days |
+| Glorious | +8 | 12 days |
+
+> **Note:** Friendly visitors, caravan movement speed buff, and faction goodwill require custom C# outcome workers. Can be added later. Best performed shortly after completing a road on the world map (thematically, not mechanically enforced).
 
 ---
 
@@ -347,9 +365,13 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 
 ## Block 5: Rituals
 
-- [ ] Create `1.6/Defs/Rituals/GroundbreakingCeremony.xml`
-- [ ] Create `1.6/Defs/Rituals/OpeningOfTheLine.xml`
-- [ ] Create PreceptDefs linking rituals to `WM_Waymakers`
+- [x] Create `Ritual_Patterns_Waymakers.xml` , 2 RitualPatternDefs
+- [x] Create `Ritual_Behaviors_Waymakers.xml` , Surveyor role, speech + socialize stages
+- [x] Create `Ritual_Outcomes_Waymakers.xml` , 4 quality tiers each, mood memories
+- [x] Create `Precepts_Rituals_Waymakers.xml` , links both rituals to `WM_Waymakers`
+- [x] Outcome quality scales with participant count and Surveyor stats
+- [x] Using vanilla components only (no custom C# for outcomes)
+- [ ] Add inspiration chance, stat buffs, and visitor spawning via custom workers (nice-to-have)
 
 ## Block 6: Mood Thoughts
 
@@ -382,7 +404,7 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] Meme icon (`Textures/UI/Memes/Waymakers.png`, 128x128)
 - [x] Role icon (`Textures/UI/Roles/Surveyor.png`)
 - [x] Ability icon (`Textures/UI/Abilities/CoordinateWorks.png`)
-- [ ] Ritual icons
+- [x] Ritual icons (`WM_GroundbreakingCeremony`, `WM_OpeningOfTheLine`)
 
 ## Block 10: Localization
 

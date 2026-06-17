@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RitualOutcomeEffectDef>
+    <defName>WM_GroundbreakingCeremony</defName>
+    <description>Depending on ritual quality, participants will get between {MINMOOD} and {MAXMOOD} mood for {MOODDAYS} days. The Surveyor sets the tone.</description>
+    <workerClass>RitualOutcomeEffectWorker_FromQuality</workerClass>
+    <allowAttachableOutcome>false</allowAttachableOutcome>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>participant count</label>
+        <curve>
+          <points>
+            <li>(1, 0.0)</li>
+            <li>(2, 0.1)</li>
+            <li>(4, 0.25)</li>
+            <li>(7, 0.4)</li>
+            <li>(10, 0.5)</li>
+            <li>(13, 0.6)</li>
+          </points>
+        </curve>
+      </li>
+      <li Class="RitualOutcomeComp_PawnSkill">
+        <label>Surveyor's construction skill</label>
+        <labelAbstract>Surveyor's construction skill</labelAbstract>
+        <roleId>surveyor</roleId>
+        <skillDef>Construction</skillDef>
+        <curve>
+          <points>
+            <li>(4, 0.0)</li>
+            <li>(6, 0.25)</li>
+            <li>(8, 0.35)</li>
+            <li>(10, 0.45)</li>
+            <li>(14, 0.55)</li>
+            <li>(18, 0.65)</li>
+            <li>(20, 0.8)</li>
+          </points>
+        </curve>
+      </li>
+    </comps>
+    <outcomeChances>
+      <li><label>Terrible</label><chance>0.05</chance><memory>WM_GroundbreakingTerrible</memory><description>The {0} was terrible. The Surveyor stumbled through every word.</description><positivityIndex>-2</positivityIndex></li>
+      <li><label>Lackluster</label><chance>0.20</chance><memory>WM_GroundbreakingLackluster</memory><description>The {0} was uninspired. The shovel hit the dirt and that was about it.</description><positivityIndex>-1</positivityIndex></li>
+      <li><label>Good</label><chance>0.50</chance><memory>WM_GroundbreakingGood</memory><description>The {0} was good. The Surveyor's words gave everyone purpose. The work begins.</description><positivityIndex>1</positivityIndex></li>
+      <li><label>Glorious</label><chance>0.25</chance><memory>WM_GroundbreakingGlorious</memory><description>The {0} was glorious. The Surveyor's speech ignited a fire of purpose. Everyone left ready to reshape the world.</description><positivityIndex>2</positivityIndex></li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+
+  <RitualOutcomeEffectDef>
+    <defName>WM_OpeningOfTheLine</defName>
+    <description>Depending on ritual quality, participants will get between {MINMOOD} and {MAXMOOD} mood for {MOODDAYS} days. The Surveyor commemorates the new connection.</description>
+    <workerClass>RitualOutcomeEffectWorker_FromQuality</workerClass>
+    <allowAttachableOutcome>false</allowAttachableOutcome>
+    <comps>
+      <li Class="RitualOutcomeComp_ParticipantCount">
+        <label>participant count</label>
+        <curve>
+          <points>
+            <li>(1, 0.0)</li>
+            <li>(2, 0.1)</li>
+            <li>(4, 0.25)</li>
+            <li>(7, 0.4)</li>
+            <li>(10, 0.5)</li>
+            <li>(13, 0.6)</li>
+          </points>
+        </curve>
+      </li>
+      <li Class="RitualOutcomeComp_PawnStatScaled">
+        <label>Surveyor's social impact</label>
+        <labelAbstract>Surveyor's social impact</labelAbstract>
+        <roleId>surveyor</roleId>
+        <statDef>SocialImpact</statDef>
+        <curve>
+          <points>
+            <li>(0.2, 0.0)</li>
+            <li>(0.6, 0.2)</li>
+            <li>(1.0, 0.3)</li>
+            <li>(1.5, 0.4)</li>
+          </points>
+        </curve>
+      </li>
+    </comps>
+    <outcomeChances>
+      <li><label>Terrible</label><chance>0.05</chance><memory>WM_OpeningTerrible</memory><description>The {0} was a disaster. The ribbon got tangled and things went downhill from there.</description><positivityIndex>-2</positivityIndex></li>
+      <li><label>Lackluster</label><chance>0.20</chance><memory>WM_OpeningLackluster</memory><description>The {0} was forgettable. A ribbon was cut, a few words were said.</description><positivityIndex>-1</positivityIndex></li>
+      <li><label>Good</label><chance>0.50</chance><memory>WM_OpeningGood</memory><description>The {0} was a fine celebration. The new route opens with hope and opportunity.</description><positivityIndex>1</positivityIndex></li>
+      <li><label>Glorious</label><chance>0.25</chance><memory>WM_OpeningGlorious</memory><description>The {0} was triumphant. Drinks flowed, stories were told, and everyone felt the weight of history in the new connection.</description><positivityIndex>2</positivityIndex></li>
+    </outcomeChances>
+  </RitualOutcomeEffectDef>
+
+</Defs>

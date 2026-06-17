@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <PreceptDef>
+    <defName>WM_Ritual_GroundbreakingCeremony</defName>
+    <label>groundbreaking ceremony</label>
+    <iconPath>UI/Icons/Rituals/WM_GroundbreakingCeremony</iconPath>
+    <description>A ceremony led by the Surveyor to mark the beginning of a major project. Participants receive a mood boost based on the quality of the ceremony.</description>
+    <issue>Ritual</issue>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <visible>true</visible>
+    <impact>Medium</impact>
+    <selectionWeight>1.0</selectionWeight>
+    <countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+    <ritualPatternBase>WM_GroundbreakingCeremony</ritualPatternBase>
+    <requiredMemes>
+      <li>WM_Waymakers</li>
+    </requiredMemes>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>WM_Ritual_OpeningOfTheLine</defName>
+    <label>opening of the line</label>
+    <iconPath>UI/Icons/Rituals/WM_OpeningOfTheLine</iconPath>
+    <description>A ceremony led by the Surveyor to celebrate the completion of a road or railway. Best performed after successfully connecting two points on the world map. Participants receive a mood boost based on the quality of the ceremony.</description>
+    <issue>Ritual</issue>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <visible>true</visible>
+    <impact>Medium</impact>
+    <selectionWeight>1.0</selectionWeight>
+    <countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+    <ritualPatternBase>WM_OpeningOfTheLine</ritualPatternBase>
+    <requiredMemes>
+      <li>WM_Waymakers</li>
+    </requiredMemes>
+  </PreceptDef>
+
+</Defs>

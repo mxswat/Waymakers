@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RitualBehaviorDef>
+    <defName>WM_GroundbreakingCeremony</defName>
+    <durationTicks>6250</durationTicks>
+    <roles>
+      <li Class="RitualRoleTag">
+        <label>surveyor</label>
+        <id>surveyor</id>
+        <precept>WM_IdeoRole_Surveyor</precept>
+        <tag>Surveyor</tag>
+        <required>True</required>
+        <substitutable>True</substitutable>
+        <maxCount>1</maxCount>
+        <countsAsParticipant>False</countsAsParticipant>
+        <allowChild>false</allowChild>
+        <mustBeAbleToReachTarget>True</mustBeAbleToReachTarget>
+      </li>
+    </roles>
+    <spectatorsLabel>Participants</spectatorsLabel>
+    <spectatorGerund>participate</spectatorGerund>
+    <stages>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <essential>True</essential>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage"><percentage>0.4</percentage></li>
+        </endTriggers>
+        <postAction Class="RitualStageAction_Message">
+          <text>{0}: The Surveyor has spoken. The ground is broken.</text>
+          <messageTypeDef>NeutralEvent</messageTypeDef>
+        </postAction>
+        <roleBehaviors>
+          <li>
+            <roleId>surveyor</roleId>
+            <dutyDef>SpeakOnCellFacingSpectators</dutyDef>
+            <speakerInteraction>Speech_DateRitual</speakerInteraction>
+            <customPositions>
+              <li Class="RitualPosition_BesideThing" />
+            </customPositions>
+          </li>
+        </roleBehaviors>
+        
+      </li>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage"><percentage>1</percentage></li>
+        </endTriggers>
+      </li>
+    </stages>
+  </RitualBehaviorDef>
+
+  <RitualBehaviorDef>
+    <defName>WM_OpeningOfTheLine</defName>
+    <durationTicks>6250</durationTicks>
+    <roles>
+      <li Class="RitualRoleTag">
+        <label>surveyor</label>
+        <id>surveyor</id>
+        <precept>WM_IdeoRole_Surveyor</precept>
+        <tag>Surveyor</tag>
+        <required>True</required>
+        <substitutable>True</substitutable>
+        <maxCount>1</maxCount>
+        <countsAsParticipant>False</countsAsParticipant>
+        <allowChild>false</allowChild>
+        <mustBeAbleToReachTarget>True</mustBeAbleToReachTarget>
+      </li>
+    </roles>
+    <spectatorsLabel>Participants</spectatorsLabel>
+    <spectatorGerund>participate</spectatorGerund>
+    <stages>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <essential>True</essential>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage"><percentage>0.3</percentage></li>
+        </endTriggers>
+        <postAction Class="RitualStageAction_Message">
+          <text>{0}: The Surveyor has spoken. The line is open!</text>
+          <messageTypeDef>NeutralEvent</messageTypeDef>
+        </postAction>
+        <roleBehaviors>
+          <li>
+            <roleId>surveyor</roleId>
+            <dutyDef>SpeakOnCellFacingSpectators</dutyDef>
+            <speakerInteraction>Speech_DateRitual</speakerInteraction>
+            <customPositions>
+              <li Class="RitualPosition_BesideThing" />
+            </customPositions>
+          </li>
+        </roleBehaviors>
+        
+      </li>
+      <li>
+        <defaultDuty>Spectate</defaultDuty>
+        <endTriggers>
+          <li Class="StageEndTrigger_DurationPercentage"><percentage>1</percentage></li>
+        </endTriggers>
+      </li>
+    </stages>
+  </RitualBehaviorDef>
+
+</Defs>
