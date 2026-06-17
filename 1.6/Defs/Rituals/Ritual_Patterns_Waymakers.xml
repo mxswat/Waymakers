@@ -3,7 +3,7 @@
 
   <RitualPatternDef>
     <defName>WM_GroundbreakingCeremony</defName>
-    <nameMaker>NamerRitualFestival</nameMaker>
+    <nameMaker>WM_NamerRitualGroundbreaking</nameMaker>
     <iconPathOverride>UI/Icons/Rituals/WM_GroundbreakingCeremony</iconPathOverride>
     <ritualExpectedDesc>When a new project begins, {MEMBERS} can hold a groundbreaking ceremony led by the Surveyor.</ritualExpectedDesc>
     <canStartAnytime>true</canStartAnytime>
@@ -19,7 +19,7 @@
 
   <RitualPatternDef>
     <defName>WM_OpeningOfTheLine</defName>
-    <nameMaker>NamerRitualFestival</nameMaker>
+    <nameMaker>WM_NamerRitualOpening</nameMaker>
     <iconPathOverride>UI/Icons/Rituals/WM_OpeningOfTheLine</iconPathOverride>
     <ritualExpectedDesc>When a road or railway is completed, {MEMBERS} can celebrate with an opening ceremony led by the Surveyor.</ritualExpectedDesc>
     <canStartAnytime>true</canStartAnytime>

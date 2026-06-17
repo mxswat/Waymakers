@@ -88,37 +88,4 @@
     <isBad>false</isBad>
   </HediffDef>
 
-  <HediffDef>
-    <defName>WM_OpeningBuff</defName>
-    <label>pathfinding rush</label>
-    <description>Energized by the opening ceremony, this person's movement speed is increased.</description>
-    <hediffClass>HediffWithComps</hediffClass>
-    <defaultLabelColor>(0.85, 0.6, 1.0)</defaultLabelColor>
-    <debugLabelExtra>other</debugLabelExtra>
-    <comps>
-      <li Class="HediffCompProperties_Disappears">
-        <showRemainingTime>True</showRemainingTime>
-      </li>
-      <li Class="HediffCompProperties_DisappearsOnDeath"/>
-    </comps>
-    <stages>
-      <li>
-        <statOffsets>
-          <MoveSpeed>0.10</MoveSpeed>
-        </statOffsets>
-      </li>
-      <li>
-        <statOffsets>
-          <MoveSpeed>0.17</MoveSpeed>
-        </statOffsets>
-      </li>
-      <li>
-        <statOffsets>
-          <MoveSpeed>0.25</MoveSpeed>
-        </statOffsets>
-      </li>
-    </stages>
-    <isBad>false</isBad>
-  </HediffDef>
-
 </Defs>
