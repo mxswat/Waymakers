@@ -272,21 +272,15 @@ durationDays = 5 + legs  (capped per tier: Crude 15d, Basic 20d, Engineered 25d,
 | Engineered   | +9       | Asphalt, Railroad, RailTunnel, RailOverpass       | +9    | +11   | +19    |
 | Advanced     | +13      | GlitterRoad, Glitterrail, GlitterOverpass         | +13   | +15   | +23    |
 
-Tiers stack — building all 4 gives cumulative mood bonuses.
+Tiers stack , building all 4 gives cumulative mood bonuses.
 
 ---
 
-## Isolated Settlement
+## Isolated Settlement (SCRAPPED)
 
 **Mood:** -3
 
-Triggered by:
-
-* Hostile relations with most factions.
-* Lack of visitors or traders for an extended period.
-* No road built in a long time.
-
-> **Open design.** Could use a custom ThoughtWorker checking faction relations, visitor history, or time since last road completion. Lower priority , implement after core features.
+Triggered by hostile relations, lack of visitors, or no road built. Scrapped as too generic and overlapping with Vanilla Memes Expanded mechanics.
 
 ---
 
@@ -422,7 +416,7 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] RotR integration patches (EndConstruction prefix + FinaliseConstructionSite postfix + caravan work)
 - [x] Reflection-based access (`Traverse`, `AccessTools.Method`), no compile-time RotR dep
 - [x] `ThoughtWorker_Precept_RecentRoadBuild` (Infrastructure Required, 30-day threshold, grace period)
-- [ ] ThoughtWorkers for conditional thoughts (Isolated Settlement)
+- [x] ~~ThoughtWorkers for conditional thoughts (Isolated Settlement)~~ SCRAPPED
 
 ## Block 9: Assets
 
@@ -442,3 +436,4 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 
 - [x] RulePackDef for Surveyor name maker
 - [x] Coordinate Works caravan support , patched `AmountOfWork` (×1.75 when caster hediff active)
+- [ ] Custom Waymakers Stonecutter Table , faster stone cutting, gated behind meme via `<addDesignators>`. Reuses vanilla sprite, inherits from `TableStonecutter` with `WorkSpeedGlobal` or `CraftingSpeed` bonus.

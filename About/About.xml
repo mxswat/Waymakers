@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>Waymakers</name>
-  <author>YourName</author>
+  <name>Waymakers (Roads, Rails &amp; Infrastructure Meme)</name>
+  <author>mxswat</author>
+  <url>https://github.com/mxswat/Waymakers</url>
   <packageId>waymakers.meme</packageId>
   <description>The prosperity of civilization depends on connection. Roads, railways, and commerce bind isolated peoples together and allow knowledge and culture to flourish. To create paths is a noble calling.
 
