@@ -16,8 +16,6 @@ namespace Waymakers
         private static MemeDef memeDef;
         private static HediffDef coordinateWorksHediff;
         private static HediffDef groundbreakingBuffDef;
-        internal static int lastRoadBuildTick = -1;
-
         public static MemeDef Meme => memeDef;
         public static HediffDef CoordinateWorksHediff => coordinateWorksHediff;
         public static HediffDef GroundbreakingBuffDef => groundbreakingBuffDef;
@@ -71,6 +69,21 @@ namespace Waymakers
         }
     }
 
+    public class WaymakersGameComponent : GameComponent
+    {
+        public int LastRoadBuildTick = -1;
+        public int MemeAdoptedTick = -1;
+
+        public WaymakersGameComponent(Game game) { }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look(ref LastRoadBuildTick, "waymakers_lastRoadBuildTick", -1);
+            Scribe_Values.Look(ref MemeAdoptedTick, "waymakers_memeAdoptedTick", -1);
+        }
+    }
+
     public static class Patch_EndConstruction
     {
         public static void Prefix(object __instance, Caravan caravan)
@@ -92,7 +105,9 @@ namespace Waymakers
 
                 Log.Message($"[Waymakers] Road completed: {roadDef.label}, legs={legs}, qualityTier={qualityTier}, mood=+{mood}, duration={durationDays}d");
 
-                WaymakersMod.lastRoadBuildTick = Find.TickManager.TicksGame;
+                var comp = Current.Game?.GetComponent<Waymakers.WaymakersGameComponent>();
+                if (comp != null)
+                    comp.LastRoadBuildTick = Find.TickManager.TicksGame;
 
                 ApplyThoughtToWaymakers(qualityTier, mood, durationDays);
             }
@@ -237,12 +252,19 @@ namespace Waymakers
             if (!p.IsColonist || p.IsSlave)
                 return false;
 
-            int lastTick = WaymakersMod.lastRoadBuildTick;
-            // Use settleTick as baseline for new colonies so they get a 30-day grace period
-            if (lastTick < 0)
-                lastTick = Find.TickManager.SettleTick;
+            var comp = Current.Game?.GetComponent<Waymakers.WaymakersGameComponent>();
+            if (comp == null)
+                return false;
 
-            int daysSince = (Find.TickManager.TicksGame - lastTick) / 60000;
+            if (comp.MemeAdoptedTick < 0 && p.Ideo?.HasMeme(WaymakersMod.Meme) == true)
+                comp.MemeAdoptedTick = Find.TickManager.TicksGame;
+
+            int baseline = Math.Max(comp.LastRoadBuildTick, comp.MemeAdoptedTick);
+
+            if (baseline < 0)
+                baseline = Find.TickManager.SettleTick;
+
+            int daysSince = (Find.TickManager.TicksGame - baseline) / 60000;
             return ThoughtState.ActiveAtStage(daysSince > ThresholdDays ? 1 : 0);
         }
 
@@ -268,6 +290,7 @@ namespace Waymakers
                 // Hediff added to brain for UI visibility; ticksToDisappear set manually
                 // (aura hediffs get this from GiveHediffsInRange, but ritual hediffs don't)
                 var h = kvp.Key.health.AddHediff(hediff, kvp.Key.health.hediffSet.GetBrain());
+                h.Severity = quality;
                 h.TryGetComp<HediffComp_Disappears>().ticksToDisappear = 60000;
             }
         }

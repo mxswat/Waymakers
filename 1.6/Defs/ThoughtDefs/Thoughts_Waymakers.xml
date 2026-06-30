@@ -38,13 +38,13 @@
     <durationDays>25</durationDays>
     <stackLimit>1</stackLimit>
     <stages>
-      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>9</baseMoodEffect></li>
-      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>10</baseMoodEffect></li>
-      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>11</baseMoodEffect></li>
-      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>12</baseMoodEffect></li>
-      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>13</baseMoodEffect></li>
-      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>14</baseMoodEffect></li>
-      <li><label>engineered route built</label><description>Asphalt, steel, and sweat — a modern route connects what was once distant.</description><baseMoodEffect>15</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat: a modern route connects what was once distant.</description><baseMoodEffect>9</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat: a modern route connects what was once distant.</description><baseMoodEffect>10</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat: a modern route connects what was once distant.</description><baseMoodEffect>11</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat: a modern route connects what was once distant.</description><baseMoodEffect>12</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat: a modern route connects what was once distant.</description><baseMoodEffect>13</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat: a modern route connects what was once distant.</description><baseMoodEffect>14</baseMoodEffect></li>
+      <li><label>engineered route built</label><description>Asphalt, steel, and sweat: a modern route connects what was once distant.</description><baseMoodEffect>15</baseMoodEffect></li>
     </stages>
   </ThoughtDef>
 

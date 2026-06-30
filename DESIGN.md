@@ -437,3 +437,5 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] RulePackDef for Surveyor name maker
 - [x] Coordinate Works caravan support , patched `AmountOfWork` (×1.75 when caster hediff active)
 - [ ] Custom Waymakers Stonecutter Table , faster stone cutting, gated behind meme via `<addDesignators>`. Reuses vanilla sprite, inherits from `TableStonecutter` with `WorkSpeedGlobal` or `CraftingSpeed` bonus.
+- [x] **FIX**: Groundbreaking ceremony ConstructionSpeed buff (`WM_GroundbreakingBuff`) now sets `severity = quality` so higher stages unlock at 0.33 (+35%) and 0.66 (+50%).
+- [ ] **FIX**: Opening of the Line has no stat buff. Consider adding a movespeed/trade price hediff or caravan movement speed buff on Good/Glorious outcomes.
