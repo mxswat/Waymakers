@@ -173,7 +173,7 @@ Outcome tiers (mood memory):
 | Good | +4 | 8 days |
 | Glorious | +8 | 12 days |
 
-> **Note:** Inspiration chance and construction speed buff require custom C# outcome workers. Can be added later.
+> **Note:** Construction speed buff implemented via custom worker (sets `severity = quality` for 25/35/50% stages). Inspiration chance not yet implemented.
 
 ## Opening of the Line
 
@@ -194,7 +194,7 @@ Outcome tiers (mood memory):
 | Good | +4 | 8 days |
 | Glorious | +8 | 12 days |
 
-> **Note:** Friendly visitors, caravan movement speed buff, and faction goodwill require custom C# outcome workers. Can be added later. Best performed shortly after completing a road on the world map (thematically, not mechanically enforced).
+> **Note:** Visitor spawning (TravelerGroup/TraderCaravanArrival) implemented via custom worker. Caravan movement speed buff and faction goodwill not yet implemented.
 
 ---
 
@@ -284,21 +284,11 @@ Triggered by hostile relations, lack of visitors, or no road built. Scrapped as 
 
 ---
 
-## Route Destroyed
+## Route Destroyed (SCRAPPED)
 
-> **Back burner.** Built roads in RotR are stored as `SurfaceTile.RoadLink` entries in the world grid. RotR has no "destroy road" feature , roads are only superseded by better roads, never removed. No straightforward hook exists for this thought. Revisit later; it may need a custom road-damage event or hook into colony-abandonment / Vehicle Framework loss events.
+**Mood:** -6 , Duration: 10 days
 
-**Mood:** -6
-
-Duration: 10 days
-
-Followers mourn the loss of an important connection.
-
-Triggered by:
-
-* Destruction of a road or railway.
-* Loss of a transport vehicle.
-* Abandonment of a colony.
+Built roads in RotR are stored as `SurfaceTile.RoadLink` entries in the world grid. RotR has no "destroy road" feature, roads are only superseded, never removed. No clean hook exists. Scrapped.
 
 ---
 
@@ -348,8 +338,8 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
   - [x] `exclusionTags`: `Waymaker` tag defined
   - [x] `agreeableTraits`: Industriousness degree 2, SpeedOffset degree 2, Ascetic (using tag-name-as-def workaround)
   - [x] `disagreeableTraits`: Industriousness degree -1 (lazy)
-  - [ ] Raider incompatibility: vanilla Raider has no `exclusionTags`, needs Harmony check
-  - [ ] VFEA_Isolationist incompatibility: needs XML patch to add `Waymaker` tag
+  - [x] Raider incompatibility: vanilla Raider has no `exclusionTags`, needs Harmony check
+  - [x] VFEA_Isolationist incompatibility: needs XML patch to add `Waymaker` tag
 
 ## Block 2b: Forced Precepts
 
@@ -390,15 +380,15 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] Outcome quality: PawnSkill (Construction) for both; PawnStatScaled (SocialImpact) for Opening
 - [x] Participant count curve: +10% at 2 pawns, scaling to +60% at 13
 - [x] Using vanilla components only (no custom C# for outcomes)
-- [ ] Add inspiration chance, stat buffs, and visitor spawning via custom workers (nice-to-have)
+- [x] Visitor spawning on Good/Glorious outcomes (Opening of the Line) via custom worker
 
 ## Block 6: Mood Thoughts
 
 - [x] Tier-based road thoughts (`WM_RoadBuilt_Crude/Basic/Engineered/Advanced`) , applied via EndConstruction prefix
 - [x] Scaling: `mood = base[tier] + legs/3`, duration `5+legs` capped per tier
 - [x] Same tier replaces; different tiers stack
-- [ ] Isolated Settlement (-3) , ThoughtWorker checking faction relations + time since last road (later phase)
-- [ ] Route Destroyed (-6, 10d) , **back burner**
+- [x] ~~Isolated Settlement (-3)~~ SCRAPPED (too generic, overlaps with VME)
+- [x] ~~Route Destroyed (-6, 10d)~~ SCRAPPED (no clean RotR hook)
 - [x] Trimmed: Recently Traveled, Bustling Trade, Long Time Stationary, New Ally , too generic/overlapping with VME
 
 ## Block 7: RotR Integration
@@ -407,7 +397,7 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] Patch `FinaliseConstructionSite` to count legs in chain
 - [x] Leg tracking via `RuntimeHelpers.GetHashCode` + `CountLegs` walking `previous` chain
 - [x] Caravan work speed: Patch `WorldObjectComp_Caravan.AmountOfWork` (×1.75 when caster hediff active)
-- [ ] Route destruction trigger, **back burner**
+- [x] ~~Route destruction trigger, **back burner**~~ SCRAPPED (no clean RotR hook)
 
 ## Block 8: C# Assembly
 
@@ -427,8 +417,8 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 
 ## Block 10: Localization
 
-- [ ] `Languages/English/Keyed/` translations
-- [x] `Languages/English/DefInjected/` def translations (all def types covered)
+- [x] `Languages/Italian/DefInjected/` translations (all def types covered)
+- [x] English labels are inline in Defs, no separate English Keyed needed
 
 ---
 
@@ -438,4 +428,4 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] Coordinate Works caravan support , patched `AmountOfWork` (×1.75 when caster hediff active)
 - [ ] Custom Waymakers Stonecutter Table , faster stone cutting, gated behind meme via `<addDesignators>`. Reuses vanilla sprite, inherits from `TableStonecutter` with `WorkSpeedGlobal` or `CraftingSpeed` bonus.
 - [x] **FIX**: Groundbreaking ceremony ConstructionSpeed buff (`WM_GroundbreakingBuff`) now sets `severity = quality` so higher stages unlock at 0.33 (+35%) and 0.66 (+50%).
-- [ ] **FIX**: Opening of the Line has no stat buff. Consider adding a movespeed/trade price hediff or caravan movement speed buff on Good/Glorious outcomes.
+- [x] Opening of the Line spawns TravelerGroup / TraderCaravanArrival on Good/Glorious outcomes (social buff, not stat buff)
