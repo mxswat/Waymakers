@@ -104,7 +104,7 @@ Nearby colonists receive:
 
 * Construction speed +75%
 
-Caravan support: casting before departing multiplies road-building work output by ×1.75.
+Caravan support: casting before departing doubles road-building work output.
 
 ### Disabled Work Types
 

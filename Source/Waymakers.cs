@@ -4,6 +4,7 @@ using System.Reflection;
 using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
+using UnityEngine;
 using Verse;
 
 namespace Waymakers
@@ -52,6 +53,15 @@ namespace Waymakers
                     Log.Message("[Waymakers] Patched AmountOfWork (caravan work boost).");
                 }
                 else Log.Error("[Waymakers] AmountOfWork not found.");
+
+                var moteColorMethod = AccessTools.Method(typeof(HediffComp_GiveHediffsInRange), "CompPostTick");
+                if (moteColorMethod != null)
+                {
+                    var postfix = new HarmonyMethod(typeof(Patch_MoteColor), nameof(Patch_MoteColor.Postfix));
+                    harmony.Patch(moteColorMethod, postfix: postfix);
+                    Log.Message("[Waymakers] Patched MoteColor (ideo tint).");
+                }
+                else Log.Error("[Waymakers] MoteColor method not found.");
             }
             catch (Exception e)
             {
@@ -236,7 +246,7 @@ namespace Waymakers
             {
                 if (pawn.health?.hediffSet?.HasHediff(WaymakersMod.CoordinateWorksHediff) == true)
                 {
-                    __result *= 1.75f;
+                    __result *= 2f;
                     return;
                 }
             }
@@ -313,6 +323,17 @@ namespace Waymakers
                 var parms = StorytellerUtility.DefaultParmsNow(incident.category, jobRitual.Map);
                 incident.Worker.TryExecute(parms);
             }
+        }
+    }
+
+    public static class Patch_MoteColor
+    {
+        public static void Postfix(HediffComp_GiveHediffsInRange __instance)
+        {
+            if (__instance.parent.def != WaymakersMod.CoordinateWorksHediff) return;
+            var mote = Traverse.Create(__instance).Field("mote").GetValue<Mote>();
+            if (mote != null && !mote.Destroyed)
+                mote.instanceColor = __instance.parent.pawn.Ideo?.Color ?? Color.white;
         }
     }
 }

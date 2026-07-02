@@ -3,72 +3,43 @@
 
 [b]⚠️ Requires:[/b] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410]Rails and Roads of the Rim (Continued)[/url]. This mod builds directly on top of RotR's road and rail system and will not work without it.
 
-[b]Roads, railways, and commerce bind isolated peoples together.[/b] Waymakers is a new Ideology meme for builders, traders, and explorers: colonists who believe civilization advances only when people, goods, and ideas are free to move. Prefers Industrious, Jogger, and Ascetic pawns. Dislikes Lazy.
+[b]Roads, railways, and commerce bind isolated peoples together.[/b] Waymakers is a new Ideology meme for builders, traders, and explorers: colonists who believe civilization advances only when people, goods, and ideas are free to move.
 
-[img]https://i.imgur.com/REPLACE_meme_icon.jpg[/img]
+[img]About/dividers/ideology.png[/img]
 
-[hr][/hr]
+[b]Infrastructure Required.[/b] Your colony takes a mood hit if it goes 30 days without building a road or railway (new colonies get a grace period). Stay connected, or stay miserable.
 
-[h2]🛣️ Core Identity[/h2]
-[list]
-[*][b]Infrastructure Required.[/b] Your colony takes a mood hit if it goes 30 days without building a road or railway (new colonies get a grace period). Stay connected, or stay miserable.
-[*][b]Road completion is a celebration.[/b] Finishing a road or railway grants a scaling mood buff (+2 to +23) based on quality tier and length. Better roads, longer roads, bigger payoff.
-[*]Incompatible with [b]Isolationist[/b] and [b]Raider[/b]. This is a philosophy of connection, not walls or banditry.
-[/list]
+[b]Road completion is a celebration.[/b] Finishing a road or railway grants a scaling mood buff (+2 to +30) based on quality tier and length. Better roads, longer roads, bigger payoff.
 
-[img]https://i.imgur.com/REPLACE_mood_tooltip.jpg[/img]
+Incompatible with [b]Isolationist[/b] and [b]Raider[/b]. This is a philosophy of connection, not walls or banditry.
 
-[h2]👷 Surveyor Specialist Role[/h2]
+[img]About/dividers/roles.png[/img]
+
 A new Ideology role for your master builders.
 [list]
 [*]+50% Construction speed, +20% Mining speed (passive)
 [*][b]Coordinate Works[/b] ability. Buffs nearby colonists' construction speed by +75% in a huge radius for 24 hours.
-[*]Cast before a caravan departs to boost road building work speed by 75% on the road building job itself.
+[*]Cast before a caravan departs to double road building work speed on the world map.
 [/list]
 
-[img]https://i.imgur.com/REPLACE_surveyor_ability.jpg[/img]
+[img]About/dividers/abilities.png[/img]
 
-[h2]🎉 Two New Rituals[/h2]
+[b]Coordinate Works[/b]. Rallies the crew, boosting construction speed by +75% in a huge radius for 24 hours. Cast before a caravan departs to speed up road building on the job itself.
+
+[b]Groundbreaking Buff[/b]. Granted by ritual. Temporarily boosts construction speed for all participants, scaling with ceremony quality.
+
+[img]About/dividers/rituals.png[/img]
+
 [list]
-[*][b]Groundbreaking Ceremony.[/b] Kick off a major project with the community behind you. Grants mood bonus and a Construction Speed buff (up to +50%) scaled by ritual quality.
-[*][b]Opening of the Line.[/b] Celebrate a finished road or railway. On Good or Glorious outcomes, word spreads and a trader caravan or traveler group arrives to use the new route.
+[*][b]Groundbreaking Ceremony.[/b] Kick off a major project with the community behind you.
+[*][b]Opening of the Line.[/b] Celebrate a finished road or railway with full pomp and circumstance.
 [/list]
-Both are led by the Surveyor, fully optional, and scale in quality with participant count and the Surveyor's Construction skill.
+Both are led by the Surveyor, fully optional, and scale in quality with participant count and skill.
 
-[img]https://i.imgur.com/REPLACE_ritual.jpg[/img]
+[b]Translations[/b]
+Currently available in English and Italian. More translations welcome, contribute via GitHub.
 
-[h2]🧩 Compatibility[/h2]
-[table noborder=1]
-[tr]
-[th]Requirement[/th]
-[th]Status[/th]
-[/tr]
-[tr]
-[td]Harmony[/td]
-[td]Required[/td]
-[/tr]
-[tr]
-[td]Ideology DLC[/td]
-[td]Required[/td]
-[/tr]
-[tr]
-[td]Rails and Roads of the Rim (Continued)[/td]
-[td]Required[/td]
-[/tr]
-[tr]
-[td]RimWorld Version[/td]
-[td]1.6[/td]
-[/tr]
-[/table]
-
-No Hugslib dependency. No custom Defs that override vanilla memes.
-
-[hr][/hr]
-
-[h2]💡 Design Philosophy[/h2]
-Waymakers don't care about conquest or isolation. They get their joy from movement, commerce, and cooperation, and they get uneasy when the colony goes quiet and the roads go untouched. To them, a civilization isn't defined by its walls, but by the roads that connect it to everyone else.
-
-[h2]❤️ Support[/h2]
+[b]Support[/b]
 Found a bug or have a suggestion? Open an issue on GitHub:
 [url]https://github.com/mxswat/Waymakers/issues[/url]
 

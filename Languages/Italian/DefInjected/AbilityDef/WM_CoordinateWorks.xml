@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
   <WM_CoordinateWorks.label>coordinamento lavori</WM_CoordinateWorks.label>
-  <WM_CoordinateWorks.description>Coordina gli sforzi di costruzione in un'ampia area, aumentando la velocita di costruzione di tutti i lavoratori vicini del 75%. Se lanciata prima di entrare in una carovana, accelera anche la costruzione di strade sulla mappa mondiale del 75%. Dura 24 ore.</WM_CoordinateWorks.description>
+  <WM_CoordinateWorks.description>Coordina gli sforzi di costruzione in un'ampia area, aumentando la velocita di costruzione di tutti i lavoratori vicini del 75%. Se lanciata prima di entrare in una carovana, raddoppia la velocita di costruzione delle strade sulla mappa mondiale. Dura 24 ore.</WM_CoordinateWorks.description>
 </LanguageData>

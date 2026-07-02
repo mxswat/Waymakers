@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+  <ThingDef ParentName="MoteBase">
+    <defName>WM_Mote_CoordinateWorks</defName>
+    <label>coordinate works</label>
+    <thingClass>MoteAttached</thingClass>
+    <altitudeLayer>LightingOverlay</altitudeLayer>
+    <drawOffscreen>true</drawOffscreen>
+    <mote>
+      <solidTime>9999999</solidTime>
+      <needsMaintenance>true</needsMaintenance>
+    </mote>
+    <graphicData>
+      <graphicClass>Graphic_Mote</graphicClass>
+      <texPath>Things/Mote/CombatCommandMask</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <color>(1, 1, 1, 0.5)</color>
+      <drawSize>39.6</drawSize>
+    </graphicData>
+  </ThingDef>
+
   <HediffDef ParentName="RoleStatBuff">
     <defName>WM_CoordinateWorks</defName>
     <label>coordinate works</label>
-    <description>This person is coordinating construction and logistics, boosting efficiency for everyone nearby by 75%. When present in a caravan, road building is also accelerated by 75%.</description>
+    <description>This person is coordinating construction and logistics, boosting efficiency for everyone nearby by 75%. When present in a caravan, road building speed is doubled.</description>
     <hediffClass>HediffWithComps</hediffClass>
     <comps>
       <li Class="HediffCompProperties_Disappears">
@@ -13,8 +32,8 @@
       <li Class="HediffCompProperties_DisappearsOnDeath"/>
       <li Class="HediffCompProperties_GiveHediffsInRange">
         <range>19.8</range>
-        <mote>Mote_WorkCommand</mote>
-        <hideMoteWhenNotDrafted>false</hideMoteWhenNotDrafted>
+        <mote>WM_Mote_CoordinateWorks</mote>
+        <hideMoteWhenNotDrafted>true</hideMoteWhenNotDrafted>
         <targetingParameters>
           <canTargetBuildings>false</canTargetBuildings>
           <canTargetAnimals>false</canTargetAnimals>
