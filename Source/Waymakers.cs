@@ -112,6 +112,7 @@ namespace Waymakers
                 int baseMood = new[] { 2, 5, 9, 13 }[qualityTier];
                 int mood = baseMood + (legs / 3);
                 int durationDays = 5 + legs;
+                if (qualityTier >= 2) durationDays *= 2;
 
                 Log.Message($"[Waymakers] Road completed: {roadDef.label}, legs={legs}, qualityTier={qualityTier}, mood=+{mood}, duration={durationDays}d");
 
@@ -156,18 +157,13 @@ namespace Waymakers
             if (stageIndex < 0) stageIndex = 0;
             if (stageIndex >= thoughtDef.stages.Count) stageIndex = thoughtDef.stages.Count - 1;
 
-            int maxDuration = (int)thoughtDef.durationDays;
-            if (durationDays > maxDuration) durationDays = maxDuration;
-
             foreach (var pawn in PawnsFinder.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists)
             {
                 if (pawn?.Ideo?.HasMeme(meme) == true)
                 {
                     var memory = (Thought_Memory)ThoughtMaker.MakeThought(thoughtDef);
                     memory.SetForcedStage(stageIndex);
-                    int ageOffsetTicks = (maxDuration - durationDays) * 60000;
-                    if (ageOffsetTicks > 0)
-                        Traverse.Create(memory).Field("age").SetValue(ageOffsetTicks);
+                    memory.durationTicksOverride = durationDays * 60000;
                     pawn.needs.mood?.thoughts?.memories?.TryGainMemory(memory);
                 }
             }
