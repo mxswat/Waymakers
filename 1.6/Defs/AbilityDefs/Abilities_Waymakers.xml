@@ -8,6 +8,7 @@
     <iconPath>UI/Abilities/CoordinateWorks</iconPath>
     <warmupMoteSocialSymbol>UI/Abilities/CoordinateWorks</warmupMoteSocialSymbol>
     <showWhenDrafted>false</showWhenDrafted>
+    <showGizmoOnWorldView>true</showGizmoOnWorldView>
     <hostile>false</hostile>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
     <comps>
@@ -19,7 +20,8 @@
         <replaceExisting>true</replaceExisting>
       </li>
     </comps>
-    <statBases>
+    <statBases Inherit="False">
+      <Ability_Duration>1000</Ability_Duration>
       <Ability_EffectRadius>19.8</Ability_EffectRadius>
     </statBases>
     <verbProperties>
