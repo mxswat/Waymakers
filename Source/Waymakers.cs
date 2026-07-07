@@ -406,13 +406,7 @@ namespace Waymakers
                     var a = p.abilities.AllAbilitiesForReading
                         .FirstOrDefault(x => x.def == def && x.CooldownTicksRemaining <= 0);
                     if (a == null) continue;
-                    var target = new LocalTargetInfo(p);
-                    foreach (var comp in a.comps)
-                    {
-                        if (comp is CompAbilityEffect effect)
-                            effect.Apply(target, target);
-                    }
-                    a.StartCooldown(a.CooldownTicksTotal);
+                    a.Activate(new LocalTargetInfo(p), new LocalTargetInfo(p));
                     break;
                 }
             };
