@@ -469,7 +469,8 @@ namespace Waymakers
         {
             if (WaymakersMod.CoordinateWorksHediff == null) return;
 
-            int tile = Traverse.Create(__instance).Property("Tile").GetValue<int>();
+            if (__instance is not WorldObject site) return;
+            int tile = site.Tile;
 
             foreach (var obj in Find.WorldObjects.ObjectsAt(tile))
             {
