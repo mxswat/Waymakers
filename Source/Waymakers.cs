@@ -72,14 +72,14 @@ namespace Waymakers
                 }
                 else Log.Error("[Waymakers] Caravan.GetGizmos not found.");
 
-                var inspectMethod = AccessTools.Method(typeof(Caravan), "GetInspectString");
-                if (inspectMethod != null)
+                var roadInspectMethod = AccessTools.Method("RailsAndRoadsOfTheRim.RoadConstructionSite:GetInspectString");
+                if (roadInspectMethod != null)
                 {
-                    var postfix = new HarmonyMethod(typeof(Patch_CaravanInspect), nameof(Patch_CaravanInspect.Postfix));
-                    harmony.Patch(inspectMethod, postfix: postfix);
-                    Log.Message("[Waymakers] Patched Caravan.GetInspectString.");
+                    var postfix = new HarmonyMethod(typeof(Patch_RoadSiteInspect), nameof(Patch_RoadSiteInspect.Postfix));
+                    harmony.Patch(roadInspectMethod, postfix: postfix);
+                    Log.Message("[Waymakers] Patched RoadConstructionSite.GetInspectString.");
                 }
-                else Log.Error("[Waymakers] Caravan.GetInspectString not found.");
+                else Log.Message("[Waymakers] RotR not loaded, RoadConstructionSite patch skipped.");
             }
             catch (Exception e)
             {
@@ -463,25 +463,33 @@ namespace Waymakers
         }
     }
 
-    public static class Patch_CaravanInspect
+    public static class Patch_RoadSiteInspect
     {
-        public static void Postfix(Caravan __instance, ref string __result)
+        public static void Postfix(object __instance, ref string __result)
         {
             if (WaymakersMod.CoordinateWorksHediff == null) return;
-            var pawns = new HashSet<Pawn>();
-            foreach (var p in __instance.PawnsListForReading)
-            {
-                if (!p.Dead && pawns.Add(p))
-                    Patch_CaravanGizmos.TryAddVehiclePassengers(p, pawns);
-            }
-            Patch_CaravanGizmos.CollectAllPawnsRecursive(__instance, pawns);
 
-            foreach (var pawn in pawns)
+            int tile = Traverse.Create(__instance).Property("Tile").GetValue<int>();
+
+            foreach (var obj in Find.WorldObjects.ObjectsAt(tile))
             {
-                if (pawn.health?.hediffSet?.HasHediff(WaymakersMod.CoordinateWorksHediff) == true)
+                if (obj is not Caravan caravan || !caravan.IsPlayerControlled) continue;
+
+                var pawns = new HashSet<Pawn>();
+                foreach (var p in caravan.PawnsListForReading)
                 {
-                    __result += "\nCoordination active (+100% road building speed)";
-                    return;
+                    if (!p.Dead && pawns.Add(p))
+                        Patch_CaravanGizmos.TryAddVehiclePassengers(p, pawns);
+                }
+                Patch_CaravanGizmos.CollectAllPawnsRecursive(caravan, pawns);
+
+                foreach (var pawn in pawns)
+                {
+                    if (pawn.health?.hediffSet?.HasHediff(WaymakersMod.CoordinateWorksHediff) == true)
+                    {
+                        __result += "\n" + "WM_CoordinateWorksBuffActive".Translate();
+                        return;
+                    }
                 }
             }
         }
