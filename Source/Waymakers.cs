@@ -249,7 +249,10 @@ namespace Waymakers
 
             var pawns = new HashSet<Pawn>();
             foreach (var p in caravan.PawnsListForReading)
-                pawns.Add(p);
+            {
+                if (!p.Dead && pawns.Add(p))
+                    Patch_CaravanGizmos.TryAddVehiclePassengers(p, pawns);
+            }
             Patch_CaravanGizmos.CollectAllPawnsRecursive(caravan, pawns);
 
             foreach (var pawn in pawns)
@@ -434,7 +437,7 @@ namespace Waymakers
             }
         }
 
-        private static void TryAddVehiclePassengers(Pawn pawn, HashSet<Pawn> result)
+        internal static void TryAddVehiclePassengers(Pawn pawn, HashSet<Pawn> result)
         {
             var vehicleType = AccessTools.TypeByName("Vehicles.VehiclePawn");
             if (vehicleType == null || !vehicleType.IsInstanceOfType(pawn)) return;
