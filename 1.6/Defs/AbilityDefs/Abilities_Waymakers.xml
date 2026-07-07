@@ -9,6 +9,7 @@
     <warmupMoteSocialSymbol>UI/Abilities/CoordinateWorks</warmupMoteSocialSymbol>
     <showWhenDrafted>false</showWhenDrafted>
     <showGizmoOnWorldView>true</showGizmoOnWorldView>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
     <hostile>false</hostile>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
     <comps>

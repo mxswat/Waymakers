@@ -62,6 +62,15 @@ namespace Waymakers
                     Log.Message("[Waymakers] Patched MoteColor (ideo tint).");
                 }
                 else Log.Error("[Waymakers] MoteColor method not found.");
+
+                var caravanGizmoMethod = AccessTools.Method(typeof(Caravan), "GetGizmos");
+                if (caravanGizmoMethod != null)
+                {
+                    var postfix = new HarmonyMethod(typeof(Patch_CaravanGizmos), nameof(Patch_CaravanGizmos.Postfix));
+                    harmony.Patch(caravanGizmoMethod, postfix: postfix);
+                    Log.Message("[Waymakers] Patched Caravan.GetGizmos (world pawns).");
+                }
+                else Log.Error("[Waymakers] Caravan.GetGizmos not found.");
             }
             catch (Exception e)
             {
@@ -238,7 +247,12 @@ namespace Waymakers
             var caravan = Traverse.Create(__instance).Field("parent").GetValue() as Caravan;
             if (caravan == null) return;
 
-            foreach (var pawn in caravan.PawnsListForReading)
+            var pawns = new HashSet<Pawn>();
+            foreach (var p in caravan.PawnsListForReading)
+                pawns.Add(p);
+            Patch_CaravanGizmos.CollectAllPawnsRecursive(caravan, pawns);
+
+            foreach (var pawn in pawns)
             {
                 if (pawn.health?.hediffSet?.HasHediff(WaymakersMod.CoordinateWorksHediff) == true)
                 {
@@ -322,6 +336,127 @@ namespace Waymakers
         }
     }
 
+    public static class Patch_CaravanGizmos
+    {
+        public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, Caravan __instance)
+        {
+            foreach (var g in __result)
+                yield return g;
+
+            var gizmo = CreateGizmo(__instance);
+            if (gizmo != null)
+                yield return gizmo;
+        }
+
+        private static Gizmo CreateGizmo(Caravan caravan)
+        {
+            var abilityDef = DefDatabase<AbilityDef>.GetNamed("WM_CoordinateWorks");
+            if (abilityDef == null) return null;
+
+            var pawns = new HashSet<Pawn>();
+            foreach (var p in caravan.PawnsListForReading)
+            {
+                if (!p.Dead && pawns.Add(p))
+                    TryAddVehiclePassengers(p, pawns);
+            }
+            CollectAllPawnsRecursive(caravan, pawns);
+
+            Ability bestAbility = null;
+            Pawn bestPawn = null;
+
+            foreach (var pawn in pawns)
+            {
+                if (pawn.abilities == null || pawn.Downed) continue;
+                var ability = pawn.abilities.AllAbilitiesForReading
+                    .FirstOrDefault(a => a.def == abilityDef);
+                if (ability == null) continue;
+
+                bestAbility = ability;
+                bestPawn = pawn;
+                if (ability.CooldownTicksRemaining <= 0) break;
+            }
+
+            if (bestPawn == null) return null;
+
+            bool onCooldown = bestAbility.CooldownTicksRemaining > 0;
+
+            Command_Action cmd = new Command_Action();
+            cmd.defaultLabel = abilityDef.label;
+            cmd.defaultDesc = abilityDef.description;
+            cmd.icon = abilityDef.uiIcon;
+            cmd.Disabled = onCooldown;
+            if (onCooldown)
+            {
+                cmd.disabledReason = "AbilityOnCooldown"
+                    .Translate(bestAbility.CooldownTicksRemaining.ToStringTicksToPeriod());
+            }
+            cmd.action = delegate
+            {
+                var def = DefDatabase<AbilityDef>.GetNamed("WM_CoordinateWorks");
+                var allPawns = new HashSet<Pawn>();
+                foreach (var p in caravan.PawnsListForReading)
+                {
+                    if (!p.Dead && allPawns.Add(p))
+                        TryAddVehiclePassengers(p, allPawns);
+                }
+                CollectAllPawnsRecursive(caravan, allPawns);
+                foreach (var p in allPawns)
+                {
+                    if (p.abilities == null || p.Downed) continue;
+                    var a = p.abilities.AllAbilitiesForReading
+                        .FirstOrDefault(x => x.def == def && x.CooldownTicksRemaining <= 0);
+                    if (a == null) continue;
+                    var target = new LocalTargetInfo(p);
+                    foreach (var comp in a.comps)
+                    {
+                        if (comp is CompAbilityEffect effect)
+                            effect.Apply(target, target);
+                    }
+                    a.StartCooldown(a.CooldownTicksTotal);
+                    break;
+                }
+            };
+            return cmd;
+        }
+
+        internal static void CollectAllPawnsRecursive(IThingHolder holder, HashSet<Pawn> result)
+        {
+            var children = new List<IThingHolder>();
+            holder.GetChildHolders(children);
+            foreach (var child in children)
+            {
+                if (child is ThingOwner thingOwner)
+                {
+                    foreach (var thing in thingOwner)
+                    {
+                        if (thing is Pawn p && !p.Dead && result.Add(p))
+                        {
+                            TryAddVehiclePassengers(p, result);
+                            CollectAllPawnsRecursive(p, result);
+                        }
+                    }
+                }
+                CollectAllPawnsRecursive(child, result);
+            }
+        }
+
+        private static void TryAddVehiclePassengers(Pawn pawn, HashSet<Pawn> result)
+        {
+            var vehicleType = AccessTools.TypeByName("Vehicles.VehiclePawn");
+            if (vehicleType == null || !vehicleType.IsInstanceOfType(pawn)) return;
+
+            var passengers = Traverse.Create(pawn).Property("AllPawnsAboard").GetValue<IList<Pawn>>();
+            if (passengers != null)
+            {
+                foreach (var passenger in passengers)
+                {
+                    if (!passenger.Dead)
+                        result.Add(passenger);
+                }
+            }
+        }
+    }
+
     public static class Patch_MoteColor
     {
         public static void Postfix(HediffComp_GiveHediffsInRange __instance)
@@ -332,4 +467,5 @@ namespace Waymakers
                 mote.instanceColor = __instance.parent.pawn.Ideo?.Color ?? Color.white;
         }
     }
+
 }
