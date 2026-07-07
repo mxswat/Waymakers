@@ -71,6 +71,15 @@ namespace Waymakers
                     Log.Message("[Waymakers] Patched Caravan.GetGizmos (world pawns).");
                 }
                 else Log.Error("[Waymakers] Caravan.GetGizmos not found.");
+
+                var inspectMethod = AccessTools.Method(typeof(Caravan), "GetInspectString");
+                if (inspectMethod != null)
+                {
+                    var postfix = new HarmonyMethod(typeof(Patch_CaravanInspect), nameof(Patch_CaravanInspect.Postfix));
+                    harmony.Patch(inspectMethod, postfix: postfix);
+                    Log.Message("[Waymakers] Patched Caravan.GetInspectString.");
+                }
+                else Log.Error("[Waymakers] Caravan.GetInspectString not found.");
             }
             catch (Exception e)
             {
@@ -449,6 +458,30 @@ namespace Waymakers
                 {
                     if (!passenger.Dead)
                         result.Add(passenger);
+                }
+            }
+        }
+    }
+
+    public static class Patch_CaravanInspect
+    {
+        public static void Postfix(Caravan __instance, ref string __result)
+        {
+            if (WaymakersMod.CoordinateWorksHediff == null) return;
+            var pawns = new HashSet<Pawn>();
+            foreach (var p in __instance.PawnsListForReading)
+            {
+                if (!p.Dead && pawns.Add(p))
+                    Patch_CaravanGizmos.TryAddVehiclePassengers(p, pawns);
+            }
+            Patch_CaravanGizmos.CollectAllPawnsRecursive(__instance, pawns);
+
+            foreach (var pawn in pawns)
+            {
+                if (pawn.health?.hediffSet?.HasHediff(WaymakersMod.CoordinateWorksHediff) == true)
+                {
+                    __result += "\nCoordination active (+100% road building speed)";
+                    return;
                 }
             }
         }
