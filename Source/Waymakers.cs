@@ -17,9 +17,11 @@ namespace Waymakers
         private static MemeDef memeDef;
         private static HediffDef coordinateWorksHediff;
         private static HediffDef groundbreakingBuffDef;
+        private static AbilityDef coordinateWorksAbilityDef;
         public static MemeDef Meme => memeDef;
         public static HediffDef CoordinateWorksHediff => coordinateWorksHediff;
         public static HediffDef GroundbreakingBuffDef => groundbreakingBuffDef;
+        public static AbilityDef CoordinateWorksAbilityDef => coordinateWorksAbilityDef;
 
         static WaymakersMod()
         {
@@ -89,6 +91,7 @@ namespace Waymakers
             memeDef = DefDatabase<MemeDef>.GetNamed("WM_Waymakers");
             coordinateWorksHediff = DefDatabase<HediffDef>.GetNamed("WM_CoordinateWorks");
             groundbreakingBuffDef = DefDatabase<HediffDef>.GetNamed("WM_GroundbreakingBuff");
+            coordinateWorksAbilityDef = DefDatabase<AbilityDef>.GetNamed("WM_CoordinateWorks");
 
             if (memeDef == null)
                 Log.Error("[Waymakers] MemeDef 'WM_Waymakers' not found.");
@@ -350,6 +353,8 @@ namespace Waymakers
 
     public static class Patch_CaravanGizmos
     {
+        private static readonly Type VehiclePawnType = AccessTools.TypeByName("Vehicles.VehiclePawn");
+
         public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, Caravan __instance)
         {
             foreach (var g in __result)
@@ -362,7 +367,7 @@ namespace Waymakers
 
         private static Gizmo CreateGizmo(Caravan caravan)
         {
-            var abilityDef = DefDatabase<AbilityDef>.GetNamed("WM_CoordinateWorks");
+            var abilityDef = WaymakersMod.CoordinateWorksAbilityDef;
             if (abilityDef == null) return null;
 
             var pawns = new HashSet<Pawn>();
@@ -404,7 +409,7 @@ namespace Waymakers
             }
             cmd.action = delegate
             {
-                var def = DefDatabase<AbilityDef>.GetNamed("WM_CoordinateWorks");
+                var def = WaymakersMod.CoordinateWorksAbilityDef;
                 var allPawns = new HashSet<Pawn>();
                 foreach (var p in caravan.PawnsListForReading)
                 {
@@ -448,8 +453,7 @@ namespace Waymakers
 
         internal static void TryAddVehiclePassengers(Pawn pawn, HashSet<Pawn> result)
         {
-            var vehicleType = AccessTools.TypeByName("Vehicles.VehiclePawn");
-            if (vehicleType == null || !vehicleType.IsInstanceOfType(pawn)) return;
+            if (VehiclePawnType == null || !VehiclePawnType.IsInstanceOfType(pawn)) return;
 
             var passengers = Traverse.Create(pawn).Property("AllPawnsAboard").GetValue<IList<Pawn>>();
             if (passengers != null)
@@ -498,10 +502,13 @@ namespace Waymakers
 
     public static class Patch_MoteColor
     {
+        private static readonly FieldInfo MoteField =
+            AccessTools.Field(typeof(HediffComp_GiveHediffsInRange), "mote");
+
         public static void Postfix(HediffComp_GiveHediffsInRange __instance)
         {
             if (__instance.parent.def != WaymakersMod.CoordinateWorksHediff) return;
-            var mote = Traverse.Create(__instance).Field("mote").GetValue<Mote>();
+            var mote = (Mote)MoteField.GetValue(__instance);
             if (mote != null && !mote.Destroyed)
                 mote.instanceColor = __instance.parent.pawn.Ideo?.Color ?? Color.white;
         }
