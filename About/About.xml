@@ -16,6 +16,7 @@ Icons by Nekl.</description>
     <li>
       <packageId>brrainz.harmony</packageId>
       <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
     </li>
     <li>
       <packageId>Ludeon.RimWorld.Ideology</packageId>
@@ -24,6 +25,7 @@ Icons by Nekl.</description>
     <li>
       <packageId>Mlie.RailsAndRoadsOfTheRim</packageId>
       <displayName>Rails and Roads of the Rim (Continued)</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/3271115410</steamWorkshopUrl>
     </li>
   </modDependencies>
   <loadAfter>
