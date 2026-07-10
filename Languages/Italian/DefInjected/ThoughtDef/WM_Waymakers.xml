@@ -1,16 +1,52 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
   <WM_RoadBuilt_Crude.label>strada sterrata costruita</WM_RoadBuilt_Crude.label>
+  <WM_RoadBuilt_Crude.stages.0.description>Un semplice sentiero di terra collega la nostra gente al mondo esterno.</WM_RoadBuilt_Crude.stages.0.description>
+  <WM_RoadBuilt_Crude.stages.1.description>Un semplice sentiero di terra collega la nostra gente al mondo esterno.</WM_RoadBuilt_Crude.stages.1.description>
+  <WM_RoadBuilt_Crude.stages.2.description>Un semplice sentiero di terra collega la nostra gente al mondo esterno.</WM_RoadBuilt_Crude.stages.2.description>
+  <WM_RoadBuilt_Crude.stages.3.description>Un semplice sentiero di terra collega la nostra gente al mondo esterno.</WM_RoadBuilt_Crude.stages.3.description>
+  <WM_RoadBuilt_Crude.stages.4.description>Un semplice sentiero di terra collega la nostra gente al mondo esterno.</WM_RoadBuilt_Crude.stages.4.description>
+  <WM_RoadBuilt_Crude.stages.5.description>Un semplice sentiero di terra collega la nostra gente al mondo esterno.</WM_RoadBuilt_Crude.stages.5.description>
   <WM_RoadBuilt_Basic.label>strada costruita</WM_RoadBuilt_Basic.label>
+  <WM_RoadBuilt_Basic.stages.0.description>Una strada di pietra vera e propria rafforza le nostre connessioni.</WM_RoadBuilt_Basic.stages.0.description>
+  <WM_RoadBuilt_Basic.stages.1.description>Una strada di pietra vera e propria rafforza le nostre connessioni.</WM_RoadBuilt_Basic.stages.1.description>
+  <WM_RoadBuilt_Basic.stages.2.description>Una strada di pietra vera e propria rafforza le nostre connessioni.</WM_RoadBuilt_Basic.stages.2.description>
+  <WM_RoadBuilt_Basic.stages.3.description>Una strada di pietra vera e propria rafforza le nostre connessioni.</WM_RoadBuilt_Basic.stages.3.description>
+  <WM_RoadBuilt_Basic.stages.4.description>Una strada di pietra vera e propria rafforza le nostre connessioni.</WM_RoadBuilt_Basic.stages.4.description>
+  <WM_RoadBuilt_Basic.stages.5.description>Una strada di pietra vera e propria rafforza le nostre connessioni.</WM_RoadBuilt_Basic.stages.5.description>
+  <WM_RoadBuilt_Basic.stages.6.description>Una strada di pietra vera e propria rafforza le nostre connessioni.</WM_RoadBuilt_Basic.stages.6.description>
   <WM_RoadBuilt_Engineered.label>rotta ingegnerizzata costruita</WM_RoadBuilt_Engineered.label>
+  <WM_RoadBuilt_Engineered.stages.0.description>Asfalto, acciaio e sudore: una rotta moderna collega cio che un tempo era distante.</WM_RoadBuilt_Engineered.stages.0.description>
+  <WM_RoadBuilt_Engineered.stages.1.description>Asfalto, acciaio e sudore: una rotta moderna collega cio che un tempo era distante.</WM_RoadBuilt_Engineered.stages.1.description>
+  <WM_RoadBuilt_Engineered.stages.2.description>Asfalto, acciaio e sudore: una rotta moderna collega cio che un tempo era distante.</WM_RoadBuilt_Engineered.stages.2.description>
+  <WM_RoadBuilt_Engineered.stages.3.description>Asfalto, acciaio e sudore: una rotta moderna collega cio che un tempo era distante.</WM_RoadBuilt_Engineered.stages.3.description>
+  <WM_RoadBuilt_Engineered.stages.4.description>Asfalto, acciaio e sudore: una rotta moderna collega cio che un tempo era distante.</WM_RoadBuilt_Engineered.stages.4.description>
+  <WM_RoadBuilt_Engineered.stages.5.description>Asfalto, acciaio e sudore: una rotta moderna collega cio che un tempo era distante.</WM_RoadBuilt_Engineered.stages.5.description>
+  <WM_RoadBuilt_Engineered.stages.6.description>Asfalto, acciaio e sudore: una rotta moderna collega cio che un tempo era distante.</WM_RoadBuilt_Engineered.stages.6.description>
   <WM_RoadBuilt_Advanced.label>rotta scintillante costruita</WM_RoadBuilt_Advanced.label>
+  <WM_RoadBuilt_Advanced.stages.0.description>Una strada scintillante di plasteel e componenti avanzati ora unisce la civilta. Questo e l'apice del nostro mestiere.</WM_RoadBuilt_Advanced.stages.0.description>
+  <WM_RoadBuilt_Advanced.stages.1.description>Una strada scintillante di plasteel e componenti avanzati ora unisce la civilta. Questo e l'apice del nostro mestiere.</WM_RoadBuilt_Advanced.stages.1.description>
+  <WM_RoadBuilt_Advanced.stages.2.description>Una strada scintillante di plasteel e componenti avanzati ora unisce la civilta. Questo e l'apice del nostro mestiere.</WM_RoadBuilt_Advanced.stages.2.description>
+  <WM_RoadBuilt_Advanced.stages.3.description>Una strada scintillante di plasteel e componenti avanzati ora unisce la civilta. Questo e l'apice del nostro mestiere.</WM_RoadBuilt_Advanced.stages.3.description>
+  <WM_RoadBuilt_Advanced.stages.4.description>Una strada scintillante di plasteel e componenti avanzati ora unisce la civilta. Questo e l'apice del nostro mestiere.</WM_RoadBuilt_Advanced.stages.4.description>
+  <WM_RoadBuilt_Advanced.stages.5.description>Una strada scintillante di plasteel e componenti avanzati ora unisce la civilta. Questo e l'apice del nostro mestiere.</WM_RoadBuilt_Advanced.stages.5.description>
+  <WM_RoadBuilt_Advanced.stages.6.description>Una strada scintillante di plasteel e componenti avanzati ora unisce la civilta. Questo e l'apice del nostro mestiere.</WM_RoadBuilt_Advanced.stages.6.description>
   <WM_NoRecentRoad.label>nessuna strada recente</WM_NoRecentRoad.label>
+  <WM_NoRecentRoad.stages.1.description>I nostri insediamenti rimangono disconnessi. Dobbiamo costruire strade e ferrovie.</WM_NoRecentRoad.stages.1.description>
   <WM_GroundbreakingTerrible.label>inaugurazione terribile</WM_GroundbreakingTerrible.label>
+  <WM_GroundbreakingTerrible.stages.0.description>La cerimonia e stata un imbarazzo.</WM_GroundbreakingTerrible.stages.0.description>
   <WM_GroundbreakingLackluster.label>inaugurazione mediocre</WM_GroundbreakingLackluster.label>
+  <WM_GroundbreakingLackluster.stages.0.description>La cerimonia e stata poco ispirata.</WM_GroundbreakingLackluster.stages.0.description>
   <WM_GroundbreakingGood.label>buona inaugurazione</WM_GroundbreakingGood.label>
+  <WM_GroundbreakingGood.stages.0.description>Il discorso dell'Agrimensore e stato stimolante.</WM_GroundbreakingGood.stages.0.description>
   <WM_GroundbreakingGlorious.label>inaugurazione gloriosa</WM_GroundbreakingGlorious.label>
+  <WM_GroundbreakingGlorious.stages.0.description>Un inizio trionfante per un grande progetto.</WM_GroundbreakingGlorious.stages.0.description>
   <WM_OpeningTerrible.label>terribile apertura della linea</WM_OpeningTerrible.label>
+  <WM_OpeningTerrible.stages.0.description>La cerimonia e stata un disastro. Tutti si sono sentiti in imbarazzo.</WM_OpeningTerrible.stages.0.description>
   <WM_OpeningLackluster.label>mediocre apertura della linea</WM_OpeningLackluster.label>
+  <WM_OpeningLackluster.stages.0.description>La cerimonia e stata dimenticabile.</WM_OpeningLackluster.stages.0.description>
   <WM_OpeningGood.label>buona apertura della linea</WM_OpeningGood.label>
+  <WM_OpeningGood.stages.0.description>Una bella celebrazione della nuova rotta.</WM_OpeningGood.stages.0.description>
   <WM_OpeningGlorious.label>gloriosa apertura della linea</WM_OpeningGlorious.label>
+  <WM_OpeningGlorious.stages.0.description>La celebrazione e stata indimenticabile. Tutti hanno sentito il peso della storia nella nuova connessione.</WM_OpeningGlorious.stages.0.description>
 </LanguageData>
