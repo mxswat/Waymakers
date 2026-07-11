@@ -1,7 +1,14 @@
 [h1]Waymakers[/h1]
 [quote]"No settlement should stand alone."[/quote]
 
-[b]⚠️ Requires:[/b] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410]Rails and Roads of the Rim (Continued)[/url]. This mod builds directly on top of RotR's road and rail system and will not work without it.
+[b]You need a road-building mod for the core features to work.[/b] This meme revolves around building roads and celebrating their completion. Install at least one of:
+
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410]Rails and Roads of the Rim (Continued)[/url] — full integration: road construction, item delivery, caravan work speed buff (recommended)
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3014906877]Vanilla Factions Expanded - Classical[/url] — Coordinate Works buff accelerates VFEC road projects
+[/list]
+
+Both mods are optional, but without at least one of them the road completion mood thoughts and infrastructure precept will have nothing to trigger on.
 
 [b]Roads, railways, and commerce bind isolated peoples together.[/b] Waymakers is a new Ideology meme for builders, traders, and explorers: colonists who believe civilization advances only when people, goods, and ideas are free to move.
 
@@ -25,6 +32,8 @@ A new Ideology role for your master builders.
 [img]https://raw.githubusercontent.com/mxswat/Waymakers/refs/heads/master/About/dividers/abilities_divider.png[/img]
 
 [b]Coordinate Works[/b]. Rallies the crew, boosting construction speed by +75% in a huge radius for 24 hours. Cast before a caravan departs to speed up road building on the job itself.
+
+[b]Also compatible with Vanilla Factions Expanded - Classical.[/b] The Coordinate Works buff accelerates VFEC road building projects too, not just RotR roads.
 
 [b]Groundbreaking Buff[/b]. Granted by ritual. Temporarily boosts construction speed for all participants, scaling with ceremony quality.
 

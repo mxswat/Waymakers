@@ -1,6 +1,6 @@
 # Waymakers
 
-A RimWorld meme mod integrated with [Rails and Roads of the Rim](https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410).
+A RimWorld meme mod optionally integrating with [Rails and Roads of the Rim](https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410) and [Vanilla Factions Expanded - Classical](https://steamcommunity.com/sharedfiles/filedetails/?id=3014906877).
 
 ## What it does
 
@@ -14,7 +14,7 @@ Adds the **Waymakers** meme, a Normal meme (impact 2) for builders, traders, and
 - Requires Construction 6+ and Intellectual 4+
 - Passive: +50% Construction Speed, +20% Mining Speed
 - Disabled work: Cooking, Plants, Animals, Art
-- **Coordinate Works** ability: +75% build speed aura (19.8 tile radius), caravan road building ×1.75
+- **Coordinate Works** ability: +75% build speed aura (19.8 tile radius), caravan road building ×2
 
 ### Rituals
 - **Groundbreaking Ceremony** , led by the Surveyor, grants mood bonus and construction speed buff scaled by quality
@@ -33,12 +33,17 @@ Four tier-based stacking thoughts triggered by road/rail completion:
 | Engineered | Asphalt, Railroads | +9 |
 | Advanced | Glitter roads/rails | +13 |
 
-Mood scales with road length (legs / 3) and duration scales with legs.
+Mood scales with road length and duration scales with legs.
 
 ## Dependencies
 - Harmony
 - RimWorld - Ideology
-- [Rails and Roads of the Rim (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410)
+
+**Road-building mod (one required for core features):**
+- [Rails and Roads of the Rim (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410) — full integration (recommended)
+- [Vanilla Factions Expanded - Classical](https://steamcommunity.com/sharedfiles/filedetails/?id=3014906877) — Coordinate Works buff accelerates VFEC road projects
+
+Without at least one road-building mod, the infrastructure precept and road completion mood thoughts have nothing to trigger on.
 
 ## Build
 
@@ -46,7 +51,7 @@ Mood scales with road length (legs / 3) and duration scales with legs.
 dotnet build "Source\Waymakers.csproj"
 ```
 
-Targets .NET Framework 4.7.2. Uses reflection-based Harmony patches against RotR, no compile-time dependency on the RotR DLL.
+Targets .NET Framework 4.7.2. Uses reflection-based Harmony patches against RotR and a direct reference to VFEC.dll (both optional at runtime).
 
 ## Credits
 

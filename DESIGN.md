@@ -327,7 +327,7 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 ## Block 1: Mod Skeleton
 
 - [x] Create `Waymakers/` directory under `RimWorld/Mods/`
-- [x] Create `About/About.xml` (name, packageId, dependencies: Harmony, Ideology, RotR)
+- [x] Create `About/About.xml` (name, packageId, dependencies: Harmony, Ideology)
 - [x] Create `1.6/` version folder with `Assemblies/`, `Defs/`, `Patches/` subfolders
 
 ## Block 2: MemeDef
@@ -391,13 +391,23 @@ To followers of Waymakers, civilization is not defined by walls or territory, bu
 - [x] ~~Route Destroyed (-6, 10d)~~ SCRAPPED (no clean RotR hook)
 - [x] Trimmed: Recently Traveled, Bustling Trade, Long Time Stationary, New Ally , too generic/overlapping with VME
 
-## Block 7: RotR Integration
+## Block 7: RotR Integration (optional)
 
 - [x] Patch `EndConstruction` (prefix) to detect road completions
 - [x] Patch `FinaliseConstructionSite` to count legs in chain
 - [x] Leg tracking via `RuntimeHelpers.GetHashCode` + `CountLegs` walking `previous` chain
 - [x] Caravan work speed: Patch `WorldObjectComp_Caravan.AmountOfWork` (×1.75 when caster hediff active)
 - [x] ~~Route destruction trigger, **back burner**~~ SCRAPPED (no clean RotR hook)
+- [x] RotR removed from `<modDependencies>`, kept in `<loadAfter>` only
+
+## Block 7b: VFEC Road Work Integration
+
+- [x] Patch `WorldObject.Tick` (prefix) to detect VFEC road building work
+- [x] Delta tracking via `prevWorkDone` Dictionary, 250-tick interval matching VFEC's cadence
+- [x] Doubles VFEC's `WorkDone` contribution per tick when Coordinate Works buff is active
+- [x] Guarded by `ModLister.GetActiveModWithIdentifier("OskarPotocki.VFE.Classical")`
+- [x] Direct assembly reference to `VFEC.dll` with `<Private>false</Private>`
+- [x] Dev-mode logging on each buff application
 
 ## Block 8: C# Assembly
 

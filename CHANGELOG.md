@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+- VFEC road work integration: Coordinate Works buff now doubles VFEC road building speed
+- Codebase split: monolithic Waymakers.cs split into 6 files with Patches/ directory
+- Deduplicated pawn-collection pattern into CaravanUtils helpers (`GetAllCaravanPawns`, `HasCoordinateWorksBuff`)
+
 ## 1.0.1
 
 - Complete Italian translations for all thought descriptions and buff status text
