@@ -558,19 +558,29 @@ namespace Waymakers
             if (!_vfecPresent || WaymakersMod.CoordinateWorksHediff == null) return;
             if (!caravan.IsHashIntervalTick(250)) return;
 
+            int id = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(caravan);
+
             var inst = VFEC.WorldComponent_RoadBuilding.Instance;
             if (inst == null) return;
-            if (!inst.WorkInfos.TryGetValue(caravan, out var wi)) return;
-            if (wi.WorkDone >= wi.WorkTotal) return;
+            if (!inst.WorkInfos.TryGetValue(caravan, out var wi))
+            {
+                prevWorkDone.Remove(id);
+                return;
+            }
+            if (wi.WorkDone >= wi.WorkTotal)
+            {
+                prevWorkDone.Remove(id);
+                return;
+            }
 
-            int id = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(caravan);
             if (prevWorkDone.TryGetValue(id, out var prev))
             {
                 int delta = wi.WorkDone - prev; // VFEC's contribution since last check
                 if (delta > 0 && HasCoordinateWorksBuff(caravan))
                 {
                     wi.WorkDone += delta; // double VFEC's work = 2x speed
-                    Log.Message($"[Waymakers] VFEC buff: +{delta} on tile {caravan.Tile}");
+                    if (Prefs.DevMode)
+                        Log.Message($"[Waymakers] VFEC buff: +{delta} on tile {caravan.Tile}");
                 }
             }
             prevWorkDone[id] = wi.WorkDone; // store for next check
