@@ -3,6 +3,8 @@
 ## 1.1.0
 
 - VFEC road work integration: Coordinate Works buff now doubles VFEC road building speed
+- RotR is now optional (removed from modDependencies, kept in loadOnly), VFEC also optional
+- Readme, workshop description, and About.xml updated to clarify that at least one road-building mod is needed
 - Codebase split: monolithic Waymakers.cs split into 6 files with Patches/ directory
 - Deduplicated pawn-collection pattern into CaravanUtils helpers (`GetAllCaravanPawns`, `HasCoordinateWorksBuff`)
 
