@@ -93,15 +93,16 @@ namespace Waymakers
                 }
                 else Log.Error("[Waymakers] WorldGrid.OverlayRoad not found.");
 
-                var vfecPostTick = AccessTools.Method("VFEC.WorldComponent_RoadBuilding:PostTick");
-                if (vfecPostTick != null)
+                if (ModLister.GetActiveModWithIdentifier("OskarPotocki.VFE.Classical") != null)
+                    Log.Message("[Waymakers] VFEC detected, road work buff.");
+
+                var tickMethod = AccessTools.Method(typeof(WorldObject), "Tick");
+                if (tickMethod != null)
                 {
-                    harmony.Patch(vfecPostTick,
-                        prefix: new HarmonyMethod(typeof(Patch_VFEC_Road), nameof(Patch_VFEC_Road.Prefix)),
-                        postfix: new HarmonyMethod(typeof(Patch_VFEC_Road), nameof(Patch_VFEC_Road.Postfix)));
-                    Log.Message("[Waymakers] Patched VFEC road work buff.");
+                    harmony.Patch(tickMethod,
+                        prefix: new HarmonyMethod(typeof(Patch_VFEC_Tick), nameof(Patch_VFEC_Tick.Prefix)));
+                    Log.Message("[Waymakers] Patched WorldObject.Tick (VFEC buff).");
                 }
-                else Log.Message("[Waymakers] VFEC not loaded, road work buff skipped.");
             }
             catch (Exception e)
             {
@@ -534,74 +535,49 @@ namespace Waymakers
         }
     }
 
-    public class CapturedState
+    // VFEC road work buff via WorldObject.Tick prefix + Dictionary delta tracking.
+    //
+    // Can't patch Caravan.Tick (virtual override, Harmony rejects it).
+    // Can't patch VFEC's PostTick (static method, __instance is always null).
+    // Can't use postfix + __state (postfix fires before VFEC adds work).
+    //
+    // Instead: prefix-only on WorldObject.Tick stores WorkDone in a Dictionary
+    // and compares with the value from 250 ticks ago (= VFEC's cadence).
+    // Delta is applied one tick late but compounds to exactly 2x.
+    public static class Patch_VFEC_Tick
     {
-        public int WorkDone;
-        public int WorkTotal;
-        public int Tile;
-        public RoadDef RoadDef;
-    }
+        private static readonly bool _vfecPresent =
+            ModLister.GetActiveModWithIdentifier("OskarPotocki.VFE.Classical") != null;
+        // Tracks previous WorkDone per caravan so we can detect how much
+        // VFEC added since last check and double it. Keyed by caravan hash.
+        private static readonly Dictionary<int, int> prevWorkDone = new();
 
-    public static class Patch_VFEC_Road
-    {
-        private static readonly Type RoadBuildingType = AccessTools.TypeByName("VFEC.WorldComponent_RoadBuilding");
-        private static readonly Type WorkInfoType = AccessTools.TypeByName("VFEC.WorkInfo");
-        private static readonly FieldInfo InstanceField = RoadBuildingType?.GetField("Instance");
-        private static readonly FieldInfo WorkInfosField = RoadBuildingType?.GetField("WorkInfos");
-        private static readonly FieldInfo WorkDoneField = WorkInfoType?.GetField("WorkDone");
-        private static readonly FieldInfo WorkTotalField = WorkInfoType?.GetField("WorkTotal");
-        private static readonly FieldInfo ToBuildField = WorkInfoType?.GetField("ToBuild");
-        private static readonly FieldInfo TileField = WorkInfoType?.GetField("Tile");
-        private static readonly Dictionary<int, CapturedState> StateStore = new();
-
-        public static void Prefix(Caravan __instance)
+        public static void Prefix(WorldObject __instance)
         {
-            if (__instance == null || WorkInfosField == null) return;
-            var instance = InstanceField?.GetValue(null);
-            if (instance == null) return;
+            if (__instance is not Caravan caravan) return;
+            if (!_vfecPresent || WaymakersMod.CoordinateWorksHediff == null) return;
+            if (!caravan.IsHashIntervalTick(250)) return;
 
-            var workInfos = (IDictionary)WorkInfosField.GetValue(instance);
-            if (workInfos == null || !workInfos.Contains(__instance)) return;
+            var inst = VFEC.WorldComponent_RoadBuilding.Instance;
+            if (inst == null) return;
+            if (!inst.WorkInfos.TryGetValue(caravan, out var wi)) return;
+            if (wi.WorkDone >= wi.WorkTotal) return;
 
-            var wi = workInfos[__instance];
-            int done = (int)WorkDoneField.GetValue(wi);
-            int total = (int)WorkTotalField.GetValue(wi);
-            int tile = (int)TileField.GetValue(wi);
-            var roadDef = (RoadDef)ToBuildField.GetValue(wi);
-
-            StateStore[System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(__instance)] = new CapturedState
+            int id = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(caravan);
+            if (prevWorkDone.TryGetValue(id, out var prev))
             {
-                WorkDone = done, WorkTotal = total, Tile = tile, RoadDef = roadDef
-            };
-        }
-
-        public static void Postfix(Caravan __instance)
-        {
-            if (__instance == null) return;
-            int id = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(__instance);
-            if (!StateStore.TryGetValue(id, out var prev)) return;
-            StateStore.Remove(id);
-
-            var instance = InstanceField?.GetValue(null);
-            if (instance == null) return;
-            var workInfos = (IDictionary)WorkInfosField.GetValue(instance);
-            if (workInfos == null) return;
-
-            if (!workInfos.Contains(__instance)) return;
-
-            var wi = workInfos[__instance];
-            int done = (int)WorkDoneField.GetValue(wi);
-            int workThisTick = done - prev.WorkDone;
-
-            if (HasCoordinateWorksBuff(__instance) && workThisTick > 0)
-            {
-                WorkDoneField.SetValue(wi, done + workThisTick);
+                int delta = wi.WorkDone - prev; // VFEC's contribution since last check
+                if (delta > 0 && HasCoordinateWorksBuff(caravan))
+                {
+                    wi.WorkDone += delta; // double VFEC's work = 2x speed
+                    Log.Message($"[Waymakers] VFEC buff: +{delta} on tile {caravan.Tile}");
+                }
             }
+            prevWorkDone[id] = wi.WorkDone; // store for next check
         }
 
         private static bool HasCoordinateWorksBuff(Caravan caravan)
         {
-            if (WaymakersMod.CoordinateWorksHediff == null) return false;
             var pawns = new HashSet<Pawn>();
             foreach (var p in caravan.PawnsListForReading)
             {
@@ -610,10 +586,8 @@ namespace Waymakers
             }
             Patch_CaravanGizmos.CollectAllPawnsRecursive(caravan, pawns);
             foreach (var pawn in pawns)
-            {
                 if (pawn.health?.hediffSet?.HasHediff(WaymakersMod.CoordinateWorksHediff) == true)
                     return true;
-            }
             return false;
         }
     }

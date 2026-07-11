@@ -28,9 +28,10 @@ Icons by Nekl.</description>
       <steamWorkshopUrl>steam://url/CommunityFilePage/3271115410</steamWorkshopUrl>
     </li>
   </modDependencies>
-  <loadAfter>
+   <loadAfter>
     <li>brrainz.harmony</li>
     <li>Ludeon.RimWorld.Ideology</li>
     <li>Mlie.RailsAndRoadsOfTheRim</li>
+    <li>OskarPotocki.VFE.Classical</li>
   </loadAfter>
 </ModMetaData>

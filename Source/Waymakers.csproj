@@ -18,6 +18,13 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="VFEC">
+      <HintPath>..\..\..\..\..\workshop\content\294100\2787850474\1.6\Assemblies\VFEC.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
   <Target Name="CleanHarmonyFromOutput" AfterTargets="Build">
     <Delete Files="$(OutputPath)0Harmony.dll" />
   </Target>
