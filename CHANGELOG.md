@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1
+
+- Fixed TypeLoadException when VFEC is absent by isolating VFEC type references in a NoInlining method
+- Fixed ritual participants staring at walls: now uses Party duty (socializing, chatting, eating)
+- Removed redundant VFEC compatibility line from workshop description
+
 ## 1.1.0
 
 - VFEC road work integration: Coordinate Works buff now doubles VFEC road building speed
