@@ -1,10 +1,10 @@
 ﻿[h1]Waymakers[/h1]
 [quote]"No settlement should stand alone."[/quote]
 
-[b]⚠️ You need a road-building mod for the core features to work.[/b] This meme revolves around building roads and celebrating their completion. Install at least one of:
+[b]⚠️You need a road-building mod for the core features to work.[/b] This meme revolves around building roads and celebrating their completion. Install at least one of:
 [list]
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410]Rails and Roads of the Rim (Continued)[/url] full integration: road construction, item delivery, caravan work speed buff (recommended)
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3014906877]Vanilla Factions Expanded - Classical[/url] Coordinate Works buff accelerates VFEC road projects
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3271115410]Rails and Roads of the Rim (Continued)[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3014906877]Vanilla Factions Expanded - Classical[/url]
 [/list]
 
 Both mods are optional, but without at least one of them the road completion mood thoughts and infrastructure precept will have nothing to trigger on.
@@ -32,16 +32,16 @@ A new Ideology role for your master builders.
 
 [b]Coordinate Works[/b]. Rallies the crew, boosting construction speed by +75% in a huge radius for 24 hours. Cast before a caravan departs to speed up road building on the job itself.
 
-[b]Also compatible with Vanilla Factions Expanded - Classical.[/b] The Coordinate Works buff accelerates VFEC road building projects too, not just RotR roads.
-
 [b]Groundbreaking Buff[/b]. Granted by ritual. Temporarily boosts construction speed for all participants, scaling with ceremony quality.
 
 [img]https://raw.githubusercontent.com/mxswat/Waymakers/refs/heads/master/About/dividers/rituals_divider.png[/img]
 
-[list]
-[*][b]Groundbreaking Ceremony.[/b] Kick off a major project with the community behind you.
-[*][b]Opening of the Line.[/b] Celebrate a finished road or railway with full pomp and circumstance.
-[/list]
+[b]Groundbreaking Ceremony.[/b] Kick off a major project with the community behind you. 
+[i]Grants a temporary construction speed buff to all participants, scaling with ceremony quality: +25% / +35% / +50%[/i].
+
+[b]Opening of the Line.[/b] Celebrate a finished road or railway with full pomp and circumstance. 
+[i]On positive outcomes, draws visiting caravans to your colony.[/i]
+
 Both are led by the Surveyor, fully optional, and scale in quality with participant count and skill.
 
 [b]Translations[/b]
