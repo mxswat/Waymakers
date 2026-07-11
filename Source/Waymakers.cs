@@ -564,12 +564,12 @@ namespace Waymakers
             if (inst == null) return;
             if (!inst.WorkInfos.TryGetValue(caravan, out var wi))
             {
-                prevWorkDone.Remove(id);
+                prevWorkDone.Remove(id); // road finished or caravan disbanded
                 return;
             }
             if (wi.WorkDone >= wi.WorkTotal)
             {
-                prevWorkDone.Remove(id);
+                prevWorkDone.Remove(id); // road done on VFEC's side but not removed yet
                 return;
             }
 
