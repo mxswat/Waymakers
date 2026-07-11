@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
@@ -82,6 +83,25 @@ namespace Waymakers
                     Log.Message("[Waymakers] Patched RoadConstructionSite.GetInspectString.");
                 }
                 else Log.Message("[Waymakers] RotR not loaded, RoadConstructionSite patch skipped.");
+
+                var overlayRoadMethod = AccessTools.Method(typeof(WorldGrid), "OverlayRoad", new[] { typeof(PlanetTile), typeof(PlanetTile), typeof(RoadDef) });
+                if (overlayRoadMethod != null)
+                {
+                    var postfix = new HarmonyMethod(typeof(Patch_OverlayRoad), nameof(Patch_OverlayRoad.Postfix));
+                    harmony.Patch(overlayRoadMethod, postfix: postfix);
+                    Log.Message("[Waymakers] Patched WorldGrid.OverlayRoad.");
+                }
+                else Log.Error("[Waymakers] WorldGrid.OverlayRoad not found.");
+
+                var vfecPostTick = AccessTools.Method("VFEC.WorldComponent_RoadBuilding:PostTick");
+                if (vfecPostTick != null)
+                {
+                    harmony.Patch(vfecPostTick,
+                        prefix: new HarmonyMethod(typeof(Patch_VFEC_Road), nameof(Patch_VFEC_Road.Prefix)),
+                        postfix: new HarmonyMethod(typeof(Patch_VFEC_Road), nameof(Patch_VFEC_Road.Postfix)));
+                    Log.Message("[Waymakers] Patched VFEC road work buff.");
+                }
+                else Log.Message("[Waymakers] VFEC not loaded, road work buff skipped.");
             }
             catch (Exception e)
             {
@@ -165,7 +185,7 @@ namespace Waymakers
 
         private static readonly string[] TierDefNames = { "WM_RoadBuilt_Crude", "WM_RoadBuilt_Basic", "WM_RoadBuilt_Engineered", "WM_RoadBuilt_Advanced" };
 
-        private static void ApplyThoughtToWaymakers(int tier, int mood, int durationDays)
+        internal static void ApplyThoughtToWaymakers(int tier, int mood, int durationDays)
         {
             var meme = WaymakersMod.Meme;
             if (meme == null) return;
@@ -497,6 +517,104 @@ namespace Waymakers
                     }
                 }
             }
+        }
+    }
+
+    public static class Patch_OverlayRoad
+    {
+        public static void Postfix(PlanetTile fromTile, PlanetTile toTile, RoadDef roadDef)
+        {
+            if (roadDef == null) return;
+            int tier = Patch_EndConstruction.RoadQualityTier(roadDef);
+            int baseMood = new[] { 2, 5, 9, 13 }[tier];
+            int mood = baseMood;
+            int durationDays = 5;
+            if (tier >= 2) durationDays *= 2;
+            Patch_EndConstruction.ApplyThoughtToWaymakers(tier, mood, durationDays);
+        }
+    }
+
+    public class CapturedState
+    {
+        public int WorkDone;
+        public int WorkTotal;
+        public int Tile;
+        public RoadDef RoadDef;
+    }
+
+    public static class Patch_VFEC_Road
+    {
+        private static readonly Type RoadBuildingType = AccessTools.TypeByName("VFEC.WorldComponent_RoadBuilding");
+        private static readonly Type WorkInfoType = AccessTools.TypeByName("VFEC.WorkInfo");
+        private static readonly FieldInfo InstanceField = RoadBuildingType?.GetField("Instance");
+        private static readonly FieldInfo WorkInfosField = RoadBuildingType?.GetField("WorkInfos");
+        private static readonly FieldInfo WorkDoneField = WorkInfoType?.GetField("WorkDone");
+        private static readonly FieldInfo WorkTotalField = WorkInfoType?.GetField("WorkTotal");
+        private static readonly FieldInfo ToBuildField = WorkInfoType?.GetField("ToBuild");
+        private static readonly FieldInfo TileField = WorkInfoType?.GetField("Tile");
+        private static readonly Dictionary<int, CapturedState> StateStore = new();
+
+        public static void Prefix(Caravan __instance)
+        {
+            if (__instance == null || WorkInfosField == null) return;
+            var instance = InstanceField?.GetValue(null);
+            if (instance == null) return;
+
+            var workInfos = (IDictionary)WorkInfosField.GetValue(instance);
+            if (workInfos == null || !workInfos.Contains(__instance)) return;
+
+            var wi = workInfos[__instance];
+            int done = (int)WorkDoneField.GetValue(wi);
+            int total = (int)WorkTotalField.GetValue(wi);
+            int tile = (int)TileField.GetValue(wi);
+            var roadDef = (RoadDef)ToBuildField.GetValue(wi);
+
+            StateStore[System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(__instance)] = new CapturedState
+            {
+                WorkDone = done, WorkTotal = total, Tile = tile, RoadDef = roadDef
+            };
+        }
+
+        public static void Postfix(Caravan __instance)
+        {
+            if (__instance == null) return;
+            int id = System.Runtime.CompilerServices.RuntimeHelpers.GetHashCode(__instance);
+            if (!StateStore.TryGetValue(id, out var prev)) return;
+            StateStore.Remove(id);
+
+            var instance = InstanceField?.GetValue(null);
+            if (instance == null) return;
+            var workInfos = (IDictionary)WorkInfosField.GetValue(instance);
+            if (workInfos == null) return;
+
+            if (!workInfos.Contains(__instance)) return;
+
+            var wi = workInfos[__instance];
+            int done = (int)WorkDoneField.GetValue(wi);
+            int workThisTick = done - prev.WorkDone;
+
+            if (HasCoordinateWorksBuff(__instance) && workThisTick > 0)
+            {
+                WorkDoneField.SetValue(wi, done + workThisTick);
+            }
+        }
+
+        private static bool HasCoordinateWorksBuff(Caravan caravan)
+        {
+            if (WaymakersMod.CoordinateWorksHediff == null) return false;
+            var pawns = new HashSet<Pawn>();
+            foreach (var p in caravan.PawnsListForReading)
+            {
+                if (!p.Dead && pawns.Add(p))
+                    Patch_CaravanGizmos.TryAddVehiclePassengers(p, pawns);
+            }
+            Patch_CaravanGizmos.CollectAllPawnsRecursive(caravan, pawns);
+            foreach (var pawn in pawns)
+            {
+                if (pawn.health?.hediffSet?.HasHediff(WaymakersMod.CoordinateWorksHediff) == true)
+                    return true;
+            }
+            return false;
         }
     }
 
