@@ -22,7 +22,7 @@
     <spectatorGerund>participate</spectatorGerund>
     <stages>
       <li>
-        <defaultDuty>Spectate</defaultDuty>
+        <defaultDuty>Party</defaultDuty>
         <essential>True</essential>
         <endTriggers>
           <li Class="StageEndTrigger_DurationPercentage"><percentage>0.4</percentage></li>
@@ -44,7 +44,7 @@
         
       </li>
       <li>
-        <defaultDuty>SociallyActive</defaultDuty>
+        <defaultDuty>Party</defaultDuty>
         <endTriggers>
           <li Class="StageEndTrigger_DurationPercentage"><percentage>1</percentage></li>
         </endTriggers>
@@ -73,7 +73,7 @@
     <spectatorGerund>participate</spectatorGerund>
     <stages>
       <li>
-        <defaultDuty>Spectate</defaultDuty>
+        <defaultDuty>Party</defaultDuty>
         <essential>True</essential>
         <endTriggers>
           <li Class="StageEndTrigger_DurationPercentage"><percentage>0.3</percentage></li>
@@ -95,7 +95,7 @@
         
       </li>
       <li>
-        <defaultDuty>SociallyActive</defaultDuty>
+        <defaultDuty>Party</defaultDuty>
         <endTriggers>
           <li Class="StageEndTrigger_DurationPercentage"><percentage>1</percentage></li>
         </endTriggers>
